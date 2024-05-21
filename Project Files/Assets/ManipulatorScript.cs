@@ -52,9 +52,11 @@ public class ManipulatorScript : MonoBehaviour
     public List<TMObject> objects;
     private float timer;
     public float rewindSecs; //will be changed
+    VoiceCommand recorder;
     // Start is called before the first frame update
     void Start()
     {
+        this.recorder = gameObject.GetComponent<VoiceCommand>();
         this.timer = 0;
         objects = new List<TMObject>();
 
@@ -85,10 +87,11 @@ public class ManipulatorScript : MonoBehaviour
         }
     }
 
-    void RewindObjects()
+    public void RewindObjects()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        float? parameter = recorder.Run();
+        if(parameter != null)
             foreach (TMObject obj in objects)
-                obj.rewindPosition(rewindSecs);
+                obj.rewindPosition((float)parameter);
     }
 }

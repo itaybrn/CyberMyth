@@ -63,6 +63,7 @@
     <Compile Include="Assets\tempBoxMove.cs" />
     <Compile Include="Assets\BoundedStack.cs" />
     <Compile Include="Assets\ManipulatorScript.cs" />
+    <Compile Include="Assets\VoiceCommand.cs" />
     <Compile Include="Assets\PlayerMove.cs" />
   </ItemGroup>
   <ItemGroup>
