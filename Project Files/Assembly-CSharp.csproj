@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\tempBoxMove.cs" />
+    <Compile Include="Assets\PowerUpCommand.cs" />
     <Compile Include="Assets\BoundedStack.cs" />
     <Compile Include="Assets\ManipulatorScript.cs" />
     <Compile Include="Assets\VoiceCommand.cs" />

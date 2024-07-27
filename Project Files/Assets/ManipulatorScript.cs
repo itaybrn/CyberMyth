@@ -2,7 +2,7 @@ using System;
 //using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using PowerUpCommands;
 
 public class TMObject
 {
@@ -72,7 +72,7 @@ public class ManipulatorScript : MonoBehaviour
     void Update()
     {
         this.SavePositions();
-        this.RewindObjects();
+        this.ExecutePowerUp();
     }
 
     void SavePositions()
@@ -87,11 +87,21 @@ public class ManipulatorScript : MonoBehaviour
         }
     }
 
-    public void RewindObjects()
+    public void ExecutePowerUp()
     {
-        float? parameter = recorder.Run();
-        if(parameter != null)
-            foreach (TMObject obj in objects)
-                obj.rewindPosition((float)parameter);
+        PowerUpCommand command = recorder.Run();
+        if (command != null)
+        {
+            PowerUp type = command.type;
+            switch(command.type)
+            {
+                case PowerUp.TimeRewind:
+                    foreach (TMObject obj in objects)
+                        obj.rewindPosition(command.parameter);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

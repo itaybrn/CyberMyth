@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using System.IO;
+using PowerUpCommands;
 
 public class JSONParser
 {
@@ -79,7 +80,7 @@ public class VoiceCommand : MonoBehaviour
     private bool isRecording = false;
     public string filePath;
     private AudioClip recordedClip;
-    private float? parameter = null;
+    private PowerUpCommand command = null; 
     private bool coroutineFinished = false;
 
     void Start()
@@ -87,7 +88,7 @@ public class VoiceCommand : MonoBehaviour
 
     }
 
-    public float? Run()
+    public PowerUpCommand Run()
     {
         // Check for user input to start or stop recording
         if (Input.GetKeyDown(KeyCode.R))
@@ -104,11 +105,11 @@ public class VoiceCommand : MonoBehaviour
         }
         if (coroutineFinished)
         {
-            float? toReturn = parameter;
-            if (parameter == null)
+            PowerUpCommand toReturn = this.command;
+            if (this.command == null)
                 Debug.LogWarning("unknown voice command");
 
-            parameter = null;
+            this.command = null;
             coroutineFinished = false;
             return toReturn;
         }
@@ -221,12 +222,12 @@ public class VoiceCommand : MonoBehaviour
             Debug.Log("Transcription result: " + www.downloadHandler.text);
 
             string command = JSONParser.parse(www.downloadHandler.text);
-            parameter = extractTimeParameter(command);
+            this.command = extractTimeParameter(command);
             coroutineFinished = true;
         }
     }
 
-    public static float? extractTimeParameter(string input)
+    public static PowerUpCommand extractTimeParameter(string input)
     {
         // Define the prefixes and suffixes
         string prefix = "Time rewind ";
@@ -245,7 +246,7 @@ public class VoiceCommand : MonoBehaviour
             // Try to convert the extracted parameter to a float
             if (float.TryParse(parameter, out float result))
             {
-                return result;
+                return new PowerUpCommand(PowerUp.TimeRewind, result);
             }
         }
         Debug.LogError("doesn't start with Time rewind or doesn't end with seconds. Voice command:" + input);
