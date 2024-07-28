@@ -4,9 +4,10 @@ namespace PowerUpCommands
 {
     public enum PowerUp
     {
-        TimeRewind
+        TimeRewind,
+        TimeStop
     };
-    public class PowerUpCommand : MonoBehaviour
+    public class PowerUpCommand
     {
 
         public PowerUp type;
