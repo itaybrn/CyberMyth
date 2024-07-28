@@ -221,13 +221,15 @@ public class VoiceCommand : MonoBehaviour
             // Print the transcription result
             Debug.Log("Transcription result: " + www.downloadHandler.text);
 
-            string command = JSONParser.parse(www.downloadHandler.text);
-            this.command = extractTimeParameter(command);
+            string commandStr = JSONParser.parse(www.downloadHandler.text);
+            this.command = timeRewind(commandStr);
+            if (this.command == null)
+                this.command = timeStop(commandStr);
             coroutineFinished = true;
         }
     }
 
-    public static PowerUpCommand extractTimeParameter(string input)
+    public static PowerUpCommand timeRewind(string input)
     {
         // Define the prefixes and suffixes
         string prefix = "Time rewind ";
@@ -249,7 +251,35 @@ public class VoiceCommand : MonoBehaviour
                 return new PowerUpCommand(PowerUp.TimeRewind, result);
             }
         }
-        Debug.LogError("doesn't start with Time rewind or doesn't end with seconds. Voice command:" + input);
+        Debug.LogWarning("not time rewind. Voice command:" + input);
+
+        // Return null if the input string doesn't meet the criteria
+        return null;
+    }
+
+    public static PowerUpCommand timeStop(string input)
+    {
+        // Define the prefixes and suffixes
+        string prefix = "Time stop ";
+        string suffix = " seconds.";
+
+        // Check if the input string starts with the prefix and ends with the suffix
+        if (input.StartsWith(prefix) && input.EndsWith(suffix))
+        {
+            // Calculate the start and end indices for the parameter
+            int startIndex = prefix.Length;
+            int endIndex = input.Length - suffix.Length;
+
+            // Extract the parameter in between
+            string parameter = input.Substring(startIndex, endIndex - startIndex);
+
+            // Try to convert the extracted parameter to a float
+            if (float.TryParse(parameter, out float result))
+            {
+                return new PowerUpCommand(PowerUp.TimeStop, result);
+            }
+        }
+        Debug.LogWarning("not time stop. Voice command:" + input);
 
         // Return null if the input string doesn't meet the criteria
         return null;

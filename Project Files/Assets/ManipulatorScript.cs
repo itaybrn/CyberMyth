@@ -51,7 +51,7 @@ public class ManipulatorScript : MonoBehaviour
     public int positionsPerSecond;
     public List<TMObject> objects;
     private float timer;
-    public float rewindSecs; //will be changed
+    public float timeStop = 0;
     VoiceCommand recorder;
     // Start is called before the first frame update
     void Start()
@@ -77,13 +77,27 @@ public class ManipulatorScript : MonoBehaviour
 
     void SavePositions()
     {
-        if (this.timer < ((float)1 / this.positionsPerSecond))
-            this.timer += Time.deltaTime;
+        if (this.timeStop > 0)
+        {
+            foreach (TMObject TMObj in this.objects)
+            {
+                GameObject obj = TMObj.obj;
+                Vector3 position = TMObj.positions.Pop();
+                obj.transform.position = position;
+                TMObj.positions.Push(position);
+            }
+            this.timeStop = Mathf.Max(0, this.timeStop - Time.deltaTime);
+        }
         else
         {
-            this.timer = 0;
-            foreach (TMObject obj in objects)
-                obj.updatePosition();
+            if (this.timer < ((float)1 / this.positionsPerSecond))
+                this.timer += Time.deltaTime;
+            else
+            {
+                this.timer = 0;
+                foreach (TMObject obj in this.objects)
+                    obj.updatePosition();
+            }
         }
     }
 
@@ -98,6 +112,9 @@ public class ManipulatorScript : MonoBehaviour
                 case PowerUp.TimeRewind:
                     foreach (TMObject obj in objects)
                         obj.rewindPosition(command.parameter);
+                    break;
+                case PowerUp.TimeStop:
+                    this.timeStop = command.parameter;
                     break;
                 default:
                     break;
