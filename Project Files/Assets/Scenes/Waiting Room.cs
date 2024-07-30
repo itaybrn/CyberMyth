@@ -7,7 +7,7 @@ public class WaitingRoomManager : MonoBehaviourPunCallbacks
 {
     public Text statusText;
     public Button startGameButton;
-    private int maxPlayers = 4;
+    private int maxPlayers;
 
     void Start()
     {

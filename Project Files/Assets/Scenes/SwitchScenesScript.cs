@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartGameScript : MonoBehaviour
+public class SwitchScenesScript : MonoBehaviour
 {
     public string sceneName;
 
