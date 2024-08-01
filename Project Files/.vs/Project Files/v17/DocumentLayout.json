@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\JoinRoomScript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scenes\\JoinRoomScript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\WaitingRoomManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scenes\\WaitingRoomManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\StartGameScript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scenes\\StartGameScript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\SwitchScenesScript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scenes\\SwitchScenesScript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\Waiting Room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scenes\\Waiting Room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\CreateGameScript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scenes\\CreateGameScript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,51 +23,28 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "JoinRoomScript.cs",
-              "DocumentMoniker": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\JoinRoomScript.cs",
-              "RelativeDocumentMoniker": "Assets\\Scenes\\JoinRoomScript.cs",
-              "ToolTip": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\JoinRoomScript.cs",
-              "RelativeToolTip": "Assets\\Scenes\\JoinRoomScript.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAkAAAAKAAAA",
+              "Title": "WaitingRoomManager.cs",
+              "DocumentMoniker": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\WaitingRoomManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scenes\\WaitingRoomManager.cs",
+              "ToolTip": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\WaitingRoomManager.cs",
+              "RelativeToolTip": "Assets\\Scenes\\WaitingRoomManager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-30T15:46:34.425Z",
+              "WhenOpened": "2024-07-31T17:41:15.066Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SwitchScenesScript.cs",
-              "DocumentMoniker": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\SwitchScenesScript.cs",
-              "RelativeDocumentMoniker": "Assets\\Scenes\\SwitchScenesScript.cs",
-              "ToolTip": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\SwitchScenesScript.cs",
-              "RelativeToolTip": "Assets\\Scenes\\SwitchScenesScript.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-30T14:54:09.093Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "StartGameScript.cs",
-              "DocumentMoniker": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\StartGameScript.cs",
-              "RelativeDocumentMoniker": "Assets\\Scenes\\StartGameScript.cs",
-              "ToolTip": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\StartGameScript.cs",
-              "RelativeToolTip": "Assets\\Scenes\\StartGameScript.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAKAAAA",
+              "Title": "CreateGameScript.cs",
+              "DocumentMoniker": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\CreateGameScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scenes\\CreateGameScript.cs",
+              "ToolTip": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\CreateGameScript.cs",
+              "RelativeToolTip": "Assets\\Scenes\\CreateGameScript.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-30T12:46:24.848Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Waiting Room.cs",
-              "DocumentMoniker": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\Waiting Room.cs",
-              "RelativeDocumentMoniker": "Assets\\Scenes\\Waiting Room.cs",
-              "ToolTip": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\Waiting Room.cs",
-              "RelativeToolTip": "Assets\\Scenes\\Waiting Room.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-27T21:06:21.481Z"
+              "WhenOpened": "2024-07-30T17:22:31.427Z",
+              "EditorCaption": ""
             }
           ]
         }
