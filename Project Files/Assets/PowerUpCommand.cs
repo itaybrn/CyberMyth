@@ -5,7 +5,10 @@ namespace PowerUpCommands
     public enum PowerUp
     {
         TimeRewind,
-        TimeStop
+        TimeStop,
+        Swap,
+        Superweapon,
+        Clone
     };
     public class PowerUpCommand
     {
