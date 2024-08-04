@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 80692527}
   - component: {fileID: 80692528}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,11 +149,11 @@ Transform:
   m_GameObject: {fileID: 80692526}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.6901245, y: -7.4539185, z: 0}
-  m_LocalScale: {x: 152, y: 152, z: 116.39839}
+  m_LocalPosition: {x: 957.28156, y: 532.4676, z: 0}
+  m_LocalScale: {x: 153.59999, y: 153.59999, z: 117.623634}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1127741774}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &80692528
 SpriteRenderer:
@@ -1305,7 +1305,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 80692527}
   - {fileID: 554226752}
   - {fileID: 917620429}
   - {fileID: 171350814}
@@ -2449,3 +2448,4 @@ SceneRoots:
   - {fileID: 1127741774}
   - {fileID: 1110172172}
   - {fileID: 2054723172}
+  - {fileID: 80692527}

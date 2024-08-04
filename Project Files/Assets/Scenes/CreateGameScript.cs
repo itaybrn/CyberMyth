@@ -12,16 +12,16 @@ public class CreateGameScript : MonoBehaviourPunCallbacks
     public string GameID;
     public int MaxPlayers;
 
-    void Start()
-    {
-        // Connect to the Photon Master Server
-        PhotonNetwork.ConnectUsingSettings();
-    }
+    //void Start()
+    //{
+    //    // Connect to the Photon Master Server
+    //    PhotonNetwork.ConnectUsingSettings();
+    //}
 
-    public override void OnConnectedToMaster()
-    {
-        Debug.Log("Connected to Master Server.");
-    }
+    //public override void OnConnectedToMaster()
+    //{
+    //    Debug.Log("Connected to Master Server.");
+    //}
 
     public void CreateGameRoom()
     {

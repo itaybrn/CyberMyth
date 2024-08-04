@@ -10,7 +10,7 @@ public class WaitingRoomManager : MonoBehaviourPunCallbacks
     public int MinPlayers;
     public int maxPlayers;
 
-    public TextMeshProUGUI gameIDText; // Reference to the TextMeshProUGUI component in your scene
+    public TextMeshProUGUI gameIDText;
     public TextMeshProUGUI statusText;
 
     void Start()

@@ -64,6 +64,7 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
     <Compile Include="Assets\tempBoxMove.cs" />
     <Compile Include="Assets\Scenes\SwitchScenesScript.cs" />
+    <Compile Include="Assets\Scenes\ConnectToPhotonCloud.cs" />
     <Compile Include="Assets\Scenes\WaitingRoomManager.cs" />
     <Compile Include="Assets\Photon\PhotonUnityNetworking\Resources\ConnectToServer.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
