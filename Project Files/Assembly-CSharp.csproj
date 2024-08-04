@@ -75,6 +75,7 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
     <Compile Include="Assets\BoundedStack.cs" />
     <Compile Include="Assets\ManipulatorScript.cs" />
+    <Compile Include="Assets\PPScript.cs" />
     <Compile Include="Assets\Scenes\CreateGameScript.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\FriendItem.cs" />
