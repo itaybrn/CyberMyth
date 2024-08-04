@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scenes\SwitchScenesScript.cs" />
     <Compile Include="Assets\Scenes\WaitingRoomManager.cs" />
     <Compile Include="Assets\Photon\PhotonUnityNetworking\Resources\ConnectToServer.cs" />
+    <Compile Include="Assets\LevelTransitioner.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatGui.cs" />
     <Compile Include="Assets\Scenes\StartGameScript.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
     <Compile Include="Assets\BoundedStack.cs" />
+    <Compile Include="Assets\DoorScript.cs" />
     <Compile Include="Assets\ManipulatorScript.cs" />
     <Compile Include="Assets\PPScript.cs" />
     <Compile Include="Assets\Scenes\CreateGameScript.cs" />
