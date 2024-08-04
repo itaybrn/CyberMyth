@@ -225,6 +225,10 @@ public class VoiceCommand : MonoBehaviour
             this.command = timeRewind(commandStr);
             if (this.command == null)
                 this.command = timeStop(commandStr);
+            if (this.command == null)
+                this.command = swap(commandStr);
+            if (this.command == null)
+                this.command = superweapon(commandStr);
             coroutineFinished = true;
         }
     }
@@ -280,6 +284,46 @@ public class VoiceCommand : MonoBehaviour
             }
         }
         Debug.LogWarning("not time stop. Voice command:" + input);
+
+        // Return null if the input string doesn't meet the criteria
+        return null;
+    }
+
+    public static PowerUpCommand swap(string input)
+    {
+        // Define the prefixes and suffixes
+        string prefix = "Swap with ";
+        string suffix = ".";
+
+        // Check if the input string starts with the prefix and ends with the suffix
+        if (input.StartsWith(prefix) && input.EndsWith(suffix))
+        {
+            // Calculate the start and end indices for the parameter
+            int startIndex = prefix.Length;
+            int endIndex = input.Length - suffix.Length;
+
+            // Extract the parameter in between
+            string parameter = input.Substring(startIndex, endIndex - startIndex);
+
+            // Try to convert the extracted parameter to a float
+            if (int.TryParse(parameter, out int result))
+            {
+                return new PowerUpCommand(PowerUp.Swap, (float)result);
+            }
+        }
+        Debug.LogWarning("not swap. Voice command:" + input);
+
+        // Return null if the input string doesn't meet the criteria
+        return null;
+    }
+
+    public static PowerUpCommand superweapon(string input)
+    {
+        if (input == "Super weapon.")
+        {
+            return new PowerUpCommand(PowerUp.Superweapon, 0);
+        }
+        Debug.LogWarning("not superweapon. Voice command:" + input);
 
         // Return null if the input string doesn't meet the criteria
         return null;

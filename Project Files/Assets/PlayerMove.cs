@@ -6,6 +6,8 @@ public class PlayerMove : MonoBehaviour
 {
     // Start is called before the first frame update
     public float moveSpd;
+    public float str;
+    public Rigidbody2D myRigidbody2D;
 
     void Start()
     {
@@ -22,5 +24,10 @@ public class PlayerMove : MonoBehaviour
         }
         else if(Input.GetKey(KeyCode.LeftArrow))
             transform.position = transform.position + Vector3.left * moveSpd * Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.Space) == true)
+        {
+            myRigidbody2D.velocity = Vector2.up * str;
+        }
     }
 }
