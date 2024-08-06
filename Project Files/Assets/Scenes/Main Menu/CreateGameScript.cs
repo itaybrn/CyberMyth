@@ -12,17 +12,6 @@ public class CreateGameScript : MonoBehaviourPunCallbacks
     public string GameID;
     public int MaxPlayers;
 
-    //void Start()
-    //{
-    //    // Connect to the Photon Master Server
-    //    PhotonNetwork.ConnectUsingSettings();
-    //}
-
-    //public override void OnConnectedToMaster()
-    //{
-    //    Debug.Log("Connected to Master Server.");
-    //}
-
     public void CreateGameRoom()
     {
         if (PhotonNetwork.IsConnectedAndReady)
@@ -35,6 +24,8 @@ public class CreateGameScript : MonoBehaviourPunCallbacks
             roomOptions.MaxPlayers = MaxPlayers;
             roomOptions.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable { { "GameID", GameID } };
             roomOptions.CustomRoomPropertiesForLobby = new string[] { "GameID" }; // Include GameID in the lobby property list if needed
+
+            PlayerPrefs.SetString("PlayerName", "Host");
 
             PhotonNetwork.CreateRoom(GameID, roomOptions);
         }

@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd2464e6bf6d50548885474e2f20c7d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestinationScene: Lobby
+  DestinationScene: WaitingRoom
   GameID: 
   MaxPlayers: 3
 --- !u!1 &536420454

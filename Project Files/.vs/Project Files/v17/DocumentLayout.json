@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\CreateGameScript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scenes\\CreateGameScript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\Main Menu\\CreateGameScript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scenes\\Main Menu\\CreateGameScript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\ConnectToPhotonCloud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scenes\\ConnectToPhotonCloud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\Waiting Room\\WaitingRoomManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scenes\\Waiting Room\\WaitingRoomManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\WaitingRoomManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scenes\\WaitingRoomManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\Join Game Lobby\\JoinGameScript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scenes\\Join Game Lobby\\JoinGameScript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\JoinRoomScript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scenes\\JoinRoomScript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\StartGameScript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scenes\\StartGameScript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,58 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ConnectToPhotonCloud.cs",
-              "DocumentMoniker": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\ConnectToPhotonCloud.cs",
-              "RelativeDocumentMoniker": "Assets\\Scenes\\ConnectToPhotonCloud.cs",
-              "ToolTip": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\ConnectToPhotonCloud.cs",
-              "RelativeToolTip": "Assets\\Scenes\\ConnectToPhotonCloud.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAfAAAA",
+              "DocumentIndex": 0,
+              "Title": "CreateGameScript.cs",
+              "DocumentMoniker": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\Main Menu\\CreateGameScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scenes\\Main Menu\\CreateGameScript.cs",
+              "ToolTip": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\Main Menu\\CreateGameScript.cs",
+              "RelativeToolTip": "Assets\\Scenes\\Main Menu\\CreateGameScript.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T13:48:04.294Z",
+              "WhenOpened": "2024-08-06T12:03:57.505Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "JoinRoomScript.cs",
-              "DocumentMoniker": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\JoinRoomScript.cs",
-              "RelativeDocumentMoniker": "Assets\\Scenes\\JoinRoomScript.cs",
-              "ToolTip": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\JoinRoomScript.cs",
-              "RelativeToolTip": "Assets\\Scenes\\JoinRoomScript.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 1,
+              "Title": "WaitingRoomManager.cs",
+              "DocumentMoniker": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\Waiting Room\\WaitingRoomManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scenes\\Waiting Room\\WaitingRoomManager.cs",
+              "ToolTip": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\Waiting Room\\WaitingRoomManager.cs",
+              "RelativeToolTip": "Assets\\Scenes\\Waiting Room\\WaitingRoomManager.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAABcAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T13:33:01.266Z",
+              "WhenOpened": "2024-08-06T08:41:38.29Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "WaitingRoomManager.cs",
-              "DocumentMoniker": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\WaitingRoomManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scenes\\WaitingRoomManager.cs",
-              "ToolTip": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\WaitingRoomManager.cs",
-              "RelativeToolTip": "Assets\\Scenes\\WaitingRoomManager.cs",
-              "ViewState": "AQIAAC0AAAAAAAAAAAAAAAwAAAAmAAAA",
+              "Title": "JoinGameScript.cs",
+              "DocumentMoniker": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\Join Game Lobby\\JoinGameScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scenes\\Join Game Lobby\\JoinGameScript.cs",
+              "ToolTip": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\Join Game Lobby\\JoinGameScript.cs",
+              "RelativeToolTip": "Assets\\Scenes\\Join Game Lobby\\JoinGameScript.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAABoAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-31T17:41:15.066Z",
+              "WhenOpened": "2024-08-05T14:28:43.446Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CreateGameScript.cs",
-              "DocumentMoniker": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\CreateGameScript.cs",
-              "RelativeDocumentMoniker": "Assets\\Scenes\\CreateGameScript.cs",
-              "ToolTip": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\CreateGameScript.cs",
-              "RelativeToolTip": "Assets\\Scenes\\CreateGameScript.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAaAAAA",
+              "DocumentIndex": 3,
+              "Title": "StartGameScript.cs",
+              "DocumentMoniker": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\StartGameScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scenes\\StartGameScript.cs",
+              "ToolTip": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\StartGameScript.cs",
+              "RelativeToolTip": "Assets\\Scenes\\StartGameScript.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-30T17:22:31.427Z",
+              "WhenOpened": "2024-08-05T13:54:57.398Z",
               "EditorCaption": ""
             }
           ]
