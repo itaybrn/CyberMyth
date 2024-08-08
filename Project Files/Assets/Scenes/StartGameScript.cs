@@ -7,7 +7,7 @@ public class StartGameScript : MonoBehaviour
 
     public void OnButtonClick()
     {
-        Debug.Log("Button clicked!");
+        Debug.Log("Starting game!");
         SceneManager.LoadScene(sceneName);
     }
 }
