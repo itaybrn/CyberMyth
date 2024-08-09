@@ -1,8 +1,6 @@
 using UnityEngine;
 using TMPro;
 using Photon.Pun;
-using ExitGames.Client.Photon;
-using Photon.Realtime;
 using System.Collections;
 
 [RequireComponent(typeof(PhotonView))]
@@ -27,56 +25,42 @@ public class PlayerMove : MonoBehaviourPunCallbacks, IPunObservable
     private Quaternion networkedRotation;
     private float lerpSpeed = 10f;
     private double lastUpdateTime;
-
     private PhotonView photonView;
 
     void Awake()
     {
+        //Initialize settings
+        PhotonNetwork.SendRate = 60;
+        PhotonNetwork.SerializationRate = 60;
+        myRigidbody2D.interpolation = RigidbodyInterpolation2D.Interpolate;
+        myRigidbody2D.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+        int playerLayer = LayerMask.NameToLayer("Players");
+        Physics2D.IgnoreLayerCollision(playerLayer, playerLayer);
+
         // Initialize the photonView reference
         photonView = GetComponent<PhotonView>();
-
-        // Log to ensure it's properly initialized
-        if (photonView == null)
-            Debug.LogError("PhotonView is null in PlayerMove.Awake()");
+        if (photonView == null) Debug.LogError("PhotonView is null in PlayerMove.Awake()");
         else
         {
             photonView.name = PhotonNetwork.LocalPlayer.NickName;
-            Debug.Log($"PhotonView name: {photonView.name}, PhotonView ID: {photonView.ViewID}");
-
-            PhotonNetwork.SendRate = 60;
-            PhotonNetwork.SerializationRate = 60;
-
-            myRigidbody2D.interpolation = RigidbodyInterpolation2D.Interpolate;
-            myRigidbody2D.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-
-            int playerLayer = LayerMask.NameToLayer("Players");
-            Physics2D.IgnoreLayerCollision(playerLayer, playerLayer);
-
-            if (photonView.IsMine)
-                Debug.Log($"IsMine is true for {photonView.name} - {photonView.ViewID}");
-            else
-                Debug.Log($"IsMine is false for {photonView.name} - {photonView.ViewID}");
+            Debug.Log($"PhotonView name: {photonView.name}, PhotonView ID: {photonView.ViewID}, PhotonView ownership: {(photonView.IsMine ? "true" : "false")}");
         }
     }
 
-    void Start() //CHANGING NOW
+    void Start()
     {
         if (photonView.IsMine)
-        {
-            // Notify GameManager that this player is ready
             StartCoroutine(NotifyGameManagerWhenReady());
-        }
     }
 
     private IEnumerator NotifyGameManagerWhenReady()
     {
-        // Wait until Awake is completed and any necessary initialization is done
         yield return new WaitForSeconds(0.1f); // Small delay to ensure initialization is complete
 
-        if (PhotonNetwork.IsMasterClient)
+        if (photonView.IsMine)
         {
-            bool readySignalSent = PhotonNetwork.RaiseEvent(1, null, RaiseEventOptions.Default, SendOptions.SendReliable);
-            if (!readySignalSent) Debug.LogError("Error! Sending ready signal failed!");
+            var properties = new ExitGames.Client.Photon.Hashtable { { "IsReady", true } };
+            PhotonNetwork.LocalPlayer.SetCustomProperties(properties);
         }
     }
 
@@ -101,7 +85,6 @@ public class PlayerMove : MonoBehaviourPunCallbacks, IPunObservable
         if (photonView.IsMine)
         {
             string username = PhotonNetwork.LocalPlayer.NickName;
-            Debug.Log($"SetUsername was called for {username}!");
             photonView.RPC("RPC_SetUsername", RpcTarget.AllBuffered, username);
         }
     }
@@ -110,17 +93,14 @@ public class PlayerMove : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     void RPC_SetUsername(string usernameString)
     {
-        Debug.Log($"[RPC_SetUsername] RPC called with: {usernameString} for {photonView.Owner.NickName} - {photonView.ViewID}");
+        //Debug.Log($"[RPC_SetUsername] RPC called with: {usernameString} for {photonView.Owner.NickName} - {photonView.ViewID}");
         if (Username != null)
         {
-            // Update the username display based on whether the PhotonView belongs to the local player
             Username.text = usernameString;
             Username.color = photonView.IsMine ? Color.yellow : Color.white;
         }
         else
-        {
             Debug.LogError("[RPC_SetUsername] Username TextMeshProUGUI component is not assigned!");
-        }
     }
 
     private void HandleInput()

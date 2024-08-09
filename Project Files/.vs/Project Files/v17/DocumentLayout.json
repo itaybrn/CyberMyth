@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{279C00DE-7FBE-E6F0-ADF8-345AD8F2F1C7}|Assembly-CSharp.csproj|E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\assets\\playermove.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{279C00DE-7FBE-E6F0-ADF8-345AD8F2F1C7}|Assembly-CSharp.csproj|e:\\eugene\\e\\my documents\\my pictures\\mta\\unity\\time-tested\\project files\\assets\\playermove.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{279C00DE-7FBE-E6F0-ADF8-345AD8F2F1C7}|Assembly-CSharp.csproj|solutionrelative:assets\\playermove.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{279C00DE-7FBE-E6F0-ADF8-345AD8F2F1C7}|Assembly-CSharp.csproj|e:\\eugene\\e\\my documents\\my pictures\\mta\\unity\\time-tested\\project files\\assets\\scenes\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{279C00DE-7FBE-E6F0-ADF8-345AD8F2F1C7}|Assembly-CSharp.csproj|E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\assets\\scenes\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{279C00DE-7FBE-E6F0-ADF8-345AD8F2F1C7}|Assembly-CSharp.csproj|solutionrelative:assets\\scenes\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{279C00DE-7FBE-E6F0-ADF8-345AD8F2F1C7}|Assembly-CSharp.csproj|E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\assets\\scenes\\waiting room\\waitingroommanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{279C00DE-7FBE-E6F0-ADF8-345AD8F2F1C7}|Assembly-CSharp.csproj|solutionrelative:assets\\scenes\\waiting room\\waitingroommanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{279C00DE-7FBE-E6F0-ADF8-345AD8F2F1C7}|Assembly-CSharp.csproj|E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\assets\\spawnerscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{279C00DE-7FBE-E6F0-ADF8-345AD8F2F1C7}|Assembly-CSharp.csproj|solutionrelative:assets\\spawnerscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{279C00DE-7FBE-E6F0-ADF8-345AD8F2F1C7}|Assembly-CSharp.csproj|e:\\eugene\\e\\my documents\\my pictures\\mta\\unity\\time-tested\\project files\\assets\\scenes\\waiting room\\waitingroommanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{279C00DE-7FBE-E6F0-ADF8-345AD8F2F1C7}|Assembly-CSharp.csproj|solutionrelative:assets\\scenes\\waiting room\\waitingroommanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -36,14 +36,14 @@
               "RelativeDocumentMoniker": "Assets\\Scenes\\GameManager.cs",
               "ToolTip": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\GameManager.cs",
               "RelativeToolTip": "Assets\\Scenes\\GameManager.cs",
-              "ViewState": "AQIAADUAAAAAAAAAAAAuwD8AAAAvAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-08T07:30:51.143Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "SpawnerScript.cs",
               "DocumentMoniker": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\SpawnerScript.cs",
               "RelativeDocumentMoniker": "Assets\\SpawnerScript.cs",
@@ -51,8 +51,7 @@
               "RelativeToolTip": "Assets\\SpawnerScript.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-07T12:41:23.217Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-07T12:41:23.217Z"
             },
             {
               "$type": "Document",
@@ -62,20 +61,20 @@
               "RelativeDocumentMoniker": "Assets\\PlayerMove.cs",
               "ToolTip": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\PlayerMove.cs",
               "RelativeToolTip": "Assets\\PlayerMove.cs",
-              "ViewState": "AQIAACAAAAAAAAAAAAAQwC4AAAAvAAAA",
+              "ViewState": "AQIAAC4AAAAAAAAAAAAgwGYAAABkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-07T11:38:09.048Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "WaitingRoomManager.cs",
               "DocumentMoniker": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\Waiting Room\\WaitingRoomManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scenes\\Waiting Room\\WaitingRoomManager.cs",
               "ToolTip": "E:\\Eugene\\E\\My Documents\\My Pictures\\MTA\\Unity\\Time-Tested\\Project Files\\Assets\\Scenes\\Waiting Room\\WaitingRoomManager.cs",
               "RelativeToolTip": "Assets\\Scenes\\Waiting Room\\WaitingRoomManager.cs",
-              "ViewState": "AQIAAIMAAAAAAAAAAAAuwFQAAABLAAAA",
+              "ViewState": "AQIAAIMAAAAAAAAAAAAuwI0AAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-06T08:41:38.29Z",
               "EditorCaption": ""
