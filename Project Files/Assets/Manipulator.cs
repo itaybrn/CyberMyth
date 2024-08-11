@@ -76,6 +76,7 @@ public class Manipulator : MonoBehaviour
     private float timeStop = 0;
     public GameObject player;
     public string SWShot;
+    public string clone;
     VoiceCommand recorder;
     public string apiKey;
     public string filePath;
@@ -84,13 +85,13 @@ public class Manipulator : MonoBehaviour
     {
         this.recorder = gameObject.GetComponent<VoiceCommand>();
         this.timer = 0;
-        objects = new List<TMObject>();
+        this.objects = new List<TMObject>();
 
         GameObject[] objectsInLayer = GameObject.FindGameObjectsWithTag(tagName);
         foreach(GameObject obj in objectsInLayer)
         {
             TMObject newObj = new(obj, maxSeconds, positionsPerSecond);
-            objects.Add(newObj);
+            this.objects.Add(newObj);
         }
     }
 
@@ -103,6 +104,7 @@ public class Manipulator : MonoBehaviour
 
     void SavePositions()
     {
+        findNewTMObjects();
         if (this.timeStop > 0)
         {
             foreach (TMObject TMObj in this.objects)
@@ -123,6 +125,29 @@ public class Manipulator : MonoBehaviour
                 this.timer = 0;
                 foreach (TMObject obj in this.objects)
                     obj.updatePosition();
+            }
+        }
+    }
+
+    private void findNewTMObjects()
+    {
+        GameObject[] objectsInLayer = GameObject.FindGameObjectsWithTag(tagName);
+        if(objectsInLayer.Length != this.objects.Count)
+        {
+            foreach(GameObject obj in objectsInLayer)
+            {
+                bool exists = false;
+                foreach(TMObject tmobj in this.objects)
+                {
+                    if (tmobj.obj == obj)
+                        exists = true;
+                }
+
+                if(!exists)
+                {
+                    TMObject newObj = new(obj, maxSeconds, positionsPerSecond);
+                    this.objects.Add(newObj);
+                }
             }
         }
     }
@@ -150,6 +175,9 @@ public class Manipulator : MonoBehaviour
                     break;
                 case PowerUp.Superweapon:
                     PhotonNetwork.Instantiate(SWShot, new Vector3(this.player.transform.position.x, this.player.transform.position.y - 1), this.player.transform.rotation);
+                    break;
+                case PowerUp.Clone:
+                    PhotonNetwork.Instantiate(clone, new Vector3(this.player.transform.position.x, this.player.transform.position.y + 4), this.player.transform.rotation);
                     break;
                 default:
                     break;

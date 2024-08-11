@@ -237,6 +237,8 @@ public class VoiceCommand : MonoBehaviour
                 this.command = swap(commandStr);
             if (this.command == null)
                 this.command = superweapon(commandStr);
+            if (this.command == null)
+                this.command = clone(commandStr);
             coroutineFinished = true;
         }
     }
@@ -328,10 +330,20 @@ public class VoiceCommand : MonoBehaviour
     public static PowerUpCommand superweapon(string input)
     {
         if (input == "Super weapon.")
-        {
             return new PowerUpCommand(PowerUp.Superweapon, 0);
-        }
+
         Debug.LogWarning("not superweapon. Voice command:" + input);
+
+        // Return null if the input string doesn't meet the criteria
+        return null;
+    }
+
+    public static PowerUpCommand clone(string input)
+    {
+        if (input == "Clone.")
+            return new PowerUpCommand(PowerUp.Clone, 0);
+
+        Debug.LogWarning("not clone. Voice command:" + input);
 
         // Return null if the input string doesn't meet the criteria
         return null;
