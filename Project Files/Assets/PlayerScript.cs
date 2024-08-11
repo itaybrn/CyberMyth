@@ -4,11 +4,12 @@ using Photon.Pun;
 using System.Collections;
 
 [RequireComponent(typeof(PhotonView))]
-public class PlayerMove : MonoBehaviourPunCallbacks, IPunObservable
+public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
 {
     public float moveSpd;
     public float str;
     public Rigidbody2D myRigidbody2D;
+    public Manipulator manipulator;
 
     //Key Bindings
     public KeyCode MoveLeft;
@@ -26,6 +27,7 @@ public class PlayerMove : MonoBehaviourPunCallbacks, IPunObservable
     private float lerpSpeed = 10f;
     private double lastUpdateTime;
     private PhotonView photonView;
+
 
     void Awake()
     {
@@ -50,7 +52,11 @@ public class PlayerMove : MonoBehaviourPunCallbacks, IPunObservable
     void Start()
     {
         if (photonView.IsMine)
+        {
             StartCoroutine(NotifyGameManagerWhenReady());
+            this.manipulator = Instantiate(manipulator, new Vector3(0, 0), new Quaternion(0, 0, 0, 0));
+            this.manipulator.player = gameObject;
+        }
     }
 
     private IEnumerator NotifyGameManagerWhenReady()
@@ -76,7 +82,7 @@ public class PlayerMove : MonoBehaviourPunCallbacks, IPunObservable
             float lag = Mathf.Max(0, (float)(PhotonNetwork.Time - lastUpdateTime));
             Vector3 targetPosition = networkedPosition + networkedVelocity * lag;
             transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * lerpSpeed);
-            transform.rotation = Quaternion.Lerp(transform.rotation, networkedRotation, Time.deltaTime * lerpSpeed);
+            //transform.rotation = Quaternion.Lerp(transform.rotation, networkedRotation, Time.deltaTime * lerpSpeed);
         }
     }
 
@@ -123,14 +129,14 @@ public class PlayerMove : MonoBehaviourPunCallbacks, IPunObservable
         if (stream.IsWriting)
         {
             stream.SendNext(transform.position);
-            stream.SendNext(myRigidbody2D.velocity);
-            stream.SendNext(transform.rotation);
+            //stream.SendNext(myRigidbody2D.velocity);
+            //stream.SendNext(transform.rotation);
         }
         else
         {
             networkedPosition = (Vector3)stream.ReceiveNext();
-            networkedVelocity = (Vector3)stream.ReceiveNext();
-            networkedRotation = (Quaternion)stream.ReceiveNext();
+            //networkedVelocity = (Vector3)stream.ReceiveNext();
+            //networkedRotation = (Quaternion)stream.ReceiveNext();
         }
     }
 }

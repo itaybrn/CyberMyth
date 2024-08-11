@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using PowerUpCommands;
+using Photon.Pun;
 
 public class PositionStatus
 {
@@ -64,7 +65,8 @@ public class TMObject
     }
 }
 
-public class ManipulatorScript : MonoBehaviour
+[System.Serializable]
+public class Manipulator : MonoBehaviour
 {
     public string tagName;
     public int maxSeconds;
@@ -73,8 +75,10 @@ public class ManipulatorScript : MonoBehaviour
     private float timer;
     private float timeStop = 0;
     public GameObject player;
-    public GameObject SWShot;
+    public string SWShot;
     VoiceCommand recorder;
+    public string apiKey;
+    public string filePath;
     // Start is called before the first frame update
     void Start()
     {
@@ -145,7 +149,7 @@ public class ManipulatorScript : MonoBehaviour
                     swapPositions(index);
                     break;
                 case PowerUp.Superweapon:
-                    Instantiate(SWShot, new Vector3(this.player.transform.position.x, this.player.transform.position.y - 1), this.player.transform.rotation);
+                    PhotonNetwork.Instantiate(SWShot, new Vector3(this.player.transform.position.x, this.player.transform.position.y - 1), this.player.transform.rotation);
                     break;
                 default:
                     break;

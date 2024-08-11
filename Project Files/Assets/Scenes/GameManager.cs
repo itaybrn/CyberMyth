@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [PunRPC]
     private void TriggerUsernameDisplay()
     {
-        foreach (var player in FindObjectsOfType<PlayerMove>())
+        foreach (var player in FindObjectsOfType<PlayerScript>())
             player.SetUsername();
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.IO;
 using PowerUpCommands;
+using Photon.Pun;
 
 public class JSONParser
 {
@@ -77,11 +78,18 @@ public class JSONParser
 public class VoiceCommand : MonoBehaviour
 {
     public string apiKey = "dummy_key_value";
-    private bool isRecording = false;
     public string filePath;
+    public PhotonView photonView;
+    private bool isRecording = false;
     private AudioClip recordedClip;
     private PowerUpCommand command = null; 
     private bool coroutineFinished = false;
+
+    public VoiceCommand(string apiKey, string filePath)
+    {
+        this.apiKey = apiKey;
+        this.filePath = filePath;
+    }
 
     void Start()
     {

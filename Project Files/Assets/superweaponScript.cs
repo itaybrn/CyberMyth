@@ -6,13 +6,13 @@ public class superweaponScript : MonoBehaviour
 {
     public int killCoordinateX;
     public float projectileSpeed;
-    public ManipulatorScript manipulator;
+    public Manipulator manipulator;
     // Start is called before the first frame update
     void Start()
     {
         GameObject manipulatorObject = GameObject.FindWithTag("Manipulator"); // Assuming the manipulator GameObject has the tag "Manipulator"
         if (manipulatorObject != null)
-            manipulator = manipulatorObject.GetComponent<ManipulatorScript>();
+            manipulator = manipulatorObject.GetComponent<Manipulator>();
     }
 
     // Update is called once per frame
