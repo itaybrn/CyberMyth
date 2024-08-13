@@ -15,7 +15,6 @@ public class WaitingRoomManager : MonoBehaviourPunCallbacks
     public GameObject playerNamePrefab;
     public Transform playerNameContainer;
 
-    public string GameScene;
     public TextMeshProUGUI gameIDText;
     public TextMeshProUGUI statusText;
 
@@ -141,10 +140,5 @@ public class WaitingRoomManager : MonoBehaviourPunCallbacks
     void CheckStartButton()
     {
         startGameButton.interactable = PhotonNetwork.CurrentRoom.PlayerCount >= MinPlayers;
-    }
-
-    public void StartGame()
-    {
-        if (PhotonNetwork.IsMasterClient) PhotonNetwork.LoadLevel(GameScene);
     }
 }

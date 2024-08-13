@@ -6,7 +6,7 @@ public class BoxMoveSynced : MonoBehaviour, IPunObservable
     public float moveSpd;
     private Vector2 networkedPosition;
     private Vector2 networkedVelocity;
-    private float lerpSpeed = 10f;
+    //private float lerpSpeed = 10f;
     private Rigidbody2D rb2D;
 
     void Start()
@@ -16,7 +16,7 @@ public class BoxMoveSynced : MonoBehaviour, IPunObservable
 
     void Update()
     {
-        if (PhotonNetwork.IsMasterClient && GetComponent<PhotonView>().IsMine)
+        if (/*PhotonNetwork.IsMasterClient && */GetComponent<PhotonView>().IsMine)
         {
             // Handle box movement locally (Master Client)
             rb2D.velocity = Vector2.left * moveSpd;
@@ -24,8 +24,8 @@ public class BoxMoveSynced : MonoBehaviour, IPunObservable
         else
         {
             // Smooth movement of the box with interpolation for remote clients
-            rb2D.position = Vector2.Lerp(rb2D.position, networkedPosition, Time.deltaTime * lerpSpeed);
-            rb2D.velocity = Vector2.Lerp(rb2D.velocity, networkedVelocity, Time.deltaTime * lerpSpeed);
+            rb2D.position = networkedPosition;
+            rb2D.velocity = networkedVelocity;
         }
     }
 

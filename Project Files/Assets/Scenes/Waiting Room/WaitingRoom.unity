@@ -411,7 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4972755cfc9ca40b151b0cad930214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: SampleScene
+  sceneName: Level2
 --- !u!1 &546508709
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,7 +715,6 @@ MonoBehaviour:
   MaxPlayers: 3
   playerNamePrefab: {fileID: 5193386697209260338, guid: 3fc6d422c09da0a4093caa7f23d26f3f, type: 3}
   playerNameContainer: {fileID: 546508710}
-  GameScene: SampleScene
   gameIDText: {fileID: 1883227233}
   statusText: {fileID: 1862350362}
 --- !u!1 &1407506796

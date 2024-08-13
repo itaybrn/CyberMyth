@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 {
     private int numOfPlayers;
     private int playersReady = 0;
+    private bool allPlayersReady = false;
 
     private void Start()
     {
@@ -18,9 +19,12 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        Debug.Log($"Players ready: {playersReady} / {numOfPlayers}");
+        if (!allPlayersReady)
+            Debug.Log($"Players ready: {playersReady} / {numOfPlayers}");
+
         if (PhotonNetwork.CurrentRoom != null && PhotonNetwork.CurrentRoom.PlayerCount == numOfPlayers)
         {
+            
             if (playersReady < numOfPlayers)
             {
                 playersReady = 0;
@@ -30,8 +34,9 @@ public class GameManager : MonoBehaviourPunCallbacks
                         playersReady++;
             }
 
-            if (playersReady >= numOfPlayers)
+            if (playersReady >= numOfPlayers && !allPlayersReady)
             {
+                allPlayersReady = true;
                 Debug.Log("All players are ready. Proceeding with game setup.");
                 TriggerUsernameDisplay();
             }

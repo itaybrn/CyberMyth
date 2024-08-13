@@ -4,6 +4,7 @@ using Photon.Realtime;
 
 public class DoorScript : MonoBehaviour
 {
+    public Sprite doorOpenTexture;
     private PPScript[] pressurePlates;
     private bool isOpen;
 
@@ -18,8 +19,13 @@ public class DoorScript : MonoBehaviour
     {
         if (AreAllPlatesPressed())
         {
-            isOpen = true;
             Debug.Log("All pressure plates are pressed!");
+            if (!isOpen)
+            {
+                SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+                spriteRenderer.sprite = doorOpenTexture;
+            }
+            isOpen = true;
         }
     }
 
