@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Photon.Pun;
-using Photon.Realtime;
 
 public class ConnectToPhotonCloud : MonoBehaviourPunCallbacks
 {
@@ -11,14 +7,14 @@ public class ConnectToPhotonCloud : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        // Connect to the Photon Master Server
+        Debug.Log("Connecting to Master Server...");
         PhotonNetwork.ConnectUsingSettings();
-        PhotonNetwork.LoadLevel(MainMenuScene);
     }
 
     public override void OnConnectedToMaster()
     {
         Debug.Log("Connected to Master Server.");
+        PhotonNetwork.LoadLevel(MainMenuScene);
     }
 
 }

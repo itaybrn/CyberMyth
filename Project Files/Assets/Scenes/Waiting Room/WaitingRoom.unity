@@ -208,7 +208,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1333688498}
-        m_TargetAssemblyTypeName: SwitchScenesScript, Assembly-CSharp
+        m_TargetAssemblyTypeName: LeaveLobbyScript, Assembly-CSharp
         m_MethodName: OnButtonClick
         m_Mode: 1
         m_Arguments:
@@ -662,7 +662,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1333688496}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e007719c1ea89ff4e93b0426a4b2bb32, type: 3}
+  m_Script: {fileID: 11500000, guid: c2978e2b72026114eb206ff8edb8e7f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: MainMenu

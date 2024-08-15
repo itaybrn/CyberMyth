@@ -21,7 +21,7 @@ public class CreateGameScript : MonoBehaviourPunCallbacks
             Debug.Log($"Successfully generated game ID: {GameID}");
 
             RoomOptions roomOptions = new RoomOptions();
-            roomOptions.MaxPlayers = MaxPlayers;
+            roomOptions.MaxPlayers = (byte)MaxPlayers;
             roomOptions.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable { { "GameID", GameID } };
             roomOptions.CustomRoomPropertiesForLobby = new string[] { "GameID" }; // Include GameID in the lobby property list if needed
 
