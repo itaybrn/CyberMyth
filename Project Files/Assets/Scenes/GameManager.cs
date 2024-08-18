@@ -1,5 +1,6 @@
 using UnityEngine;
 using Photon.Pun;
+using ClearSky;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
@@ -46,7 +47,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [PunRPC]
     private void TriggerUsernameDisplay()
     {
-        foreach (var player in FindObjectsOfType<PlayerScript>())
+        foreach (var player in FindObjectsOfType<DemoCollegeStudentController>())
             player.SetUsername();
     }
 }
