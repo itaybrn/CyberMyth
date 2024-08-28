@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PowerUpCommands;
 using Photon.Pun;
+using ClearSky;
 
 public class PositionStatus
 {
@@ -74,21 +75,28 @@ public class Manipulator : MonoBehaviour
     public List<TMObject> objects;
     private float timer;
     private float timeStop = 0;
-    public GameObject player;
+    //public GameObject player;
     public string SWShot;
     public string clone;
-    VoiceCommand recorder;
-    public string apiKey;
-    public string filePath;
+    //VoiceCommand recorder;
+    List<PowerUpCommand> commandsToExecute;
+    GameObject[] players;
+    //public string apiKey;
+    //public string filePath;
     // Start is called before the first frame update
     void Start()
     {
-        this.recorder = gameObject.GetComponent<VoiceCommand>();
+        //this.recorder = gameObject.GetComponent<VoiceCommand>();
+        CommandSerializer.Register();
+
         this.timer = 0;
         this.objects = new List<TMObject>();
+        this.commandsToExecute = new List<PowerUpCommand>();
 
         GameObject[] objectsInLayer = GameObject.FindGameObjectsWithTag(tagName);
-        foreach(GameObject obj in objectsInLayer)
+        this.players = GameObject.FindGameObjectsWithTag("Player");
+        Debug.LogWarning("players size: " + this.players.Length);
+        foreach (GameObject obj in objectsInLayer)
         {
             TMObject newObj = new(obj, maxSeconds, positionsPerSecond);
             this.objects.Add(newObj);
@@ -98,8 +106,19 @@ public class Manipulator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (this.players.Length <= 1)
+        {
+            this.players = GameObject.FindGameObjectsWithTag("Player");
+            Debug.LogWarning("players size: " + this.players.Length);
+        }
         this.SavePositions();
-        this.ExecutePowerUp();
+        if(PhotonNetwork.IsMasterClient)
+        {
+            foreach(PowerUpCommand command in this.commandsToExecute)
+                this.ExecutePowerUp(command);
+            this.commandsToExecute.Clear();
+        }
+        
     }
 
     void SavePositions()
@@ -152,9 +171,29 @@ public class Manipulator : MonoBehaviour
         }
     }
 
-    public void ExecutePowerUp()
+    [PunRPC]
+    public void savePowerUp(PowerUp powerUp, float parameter, int playerID)
     {
-        PowerUpCommand command = recorder.Run();
+        Debug.LogWarning("Player index gotten: " + playerID);
+        PowerUpCommand newCommand = new PowerUpCommand(powerUp, parameter, playerID);
+        if(PhotonNetwork.IsMasterClient)
+            this.commandsToExecute.Add(newCommand);
+    }
+
+    public void ExecutePowerUp(PowerUpCommand command)
+    {
+        //PowerUpCommand command = recorder.Run();
+        GameObject player = null;
+        foreach(GameObject p in this.players)
+        {
+            if (p.GetComponent<PhotonView>().ViewID == command.playerIndex)
+                player = p;
+            Debug.LogWarning("Checked ID: " + command.playerIndex + " " + p.GetComponent<PhotonView>().ViewID);
+        }
+
+        if (player == null)
+            Debug.LogError("Didn't recognize player ID: " + command.playerIndex);
+        
         if (command != null)
         {
             PowerUp type = command.type;
@@ -170,14 +209,13 @@ public class Manipulator : MonoBehaviour
                     this.timeStop = command.parameter;
                     break;
                 case PowerUp.Swap:
-                    int index = (int)command.parameter;
-                    swapPositions(index);
+                    swapPositions(command, player);
                     break;
                 case PowerUp.Superweapon:
-                    PhotonNetwork.Instantiate(SWShot, new Vector3(this.player.transform.position.x, this.player.transform.position.y - 1), this.player.transform.rotation);
+                    PhotonNetwork.Instantiate(SWShot, new Vector3(player.transform.position.x, player.transform.position.y - 1), player.transform.rotation);
                     break;
                 case PowerUp.Clone:
-                    PhotonNetwork.Instantiate(clone, new Vector3(this.player.transform.position.x, this.player.transform.position.y + 4), this.player.transform.rotation);
+                    PhotonNetwork.Instantiate(clone, new Vector3(player.transform.position.x, player.transform.position.y + 4), player.transform.rotation);
                     break;
                 default:
                     break;
@@ -185,8 +223,10 @@ public class Manipulator : MonoBehaviour
         }
     }
 
-    private void swapPositions(int index)
+    private void swapPositions(PowerUpCommand command, GameObject player)
     {
+        int index = (int)command.parameter;
+
         if (index > this.objects.Count || index < 1)
             Debug.LogError("index: " + index + " out of range");
         else
@@ -196,8 +236,9 @@ public class Manipulator : MonoBehaviour
                 Debug.LogError("Object is destroyed, can't swap");
             else
             {
-                Vector2 temp = this.player.transform.position;
-                this.player.transform.position = obj.obj.transform.position;
+                Vector2 temp = player.transform.position;
+                player.GetComponent<DemoCollegeStudentController>().Teleport(obj.obj.transform.position);
+                //player.transform.position = obj.obj.transform.position;
                 obj.obj.transform.position = temp;
                 Debug.LogWarning("Swapped player with object " + index);
             }
@@ -219,5 +260,5 @@ public class Manipulator : MonoBehaviour
             toBeDestroyed.obj.transform.position = toBeDestroyed.obj.transform.position + Vector3.up * 40;
             toBeDestroyed.destroyed = true;
         }
-    }    
+    }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using TMPro;
+using PowerUpCommands;
 
 namespace ClearSky
 {
@@ -35,10 +36,14 @@ namespace ClearSky
         public TextMeshProUGUI Username;
 
         private PhotonView photonView;
-        public Manipulator manipulator;
+        VoiceCommand recorder;
+        Manipulator manipulator;
+        int playerIndex;
 
         void Awake()
         {
+            //Register PowerUpCommand custom type to photon
+            //CommandSerializer.Register();
             //Initialize settings
             PhotonNetwork.SendRate = 60;
             PhotonNetwork.SerializationRate = 60;
@@ -60,6 +65,16 @@ namespace ClearSky
         // Start is called before the first frame update
         void Start()
         {
+            /*GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+            for (int i = 0; i < players.Length; i++)
+            {
+                if (players[i].GetComponent<PhotonView>().IsMine)
+                {
+                    this.playerIndex = i;
+                    Debug.LogWarning("My player index: " + i);
+                }
+            }*/
+            this.playerIndex = photonView.ViewID;
             rb = GetComponent<Rigidbody2D>();
             anim = GetComponent<Animator>();
 
@@ -68,8 +83,8 @@ namespace ClearSky
             if (photonView.IsMine)
             {
                 StartCoroutine(NotifyGameManagerWhenReady());
-                this.manipulator = Instantiate(manipulator, new Vector3(0, 0), new Quaternion(0, 0, 0, 0));
-                this.manipulator.player = gameObject;
+                this.recorder = gameObject.GetComponent<VoiceCommand>();
+                this.manipulator = FindAnyObjectByType<Manipulator>();
             }
         }
 
@@ -88,6 +103,9 @@ namespace ClearSky
         {
             if (photonView.IsMine)
             {
+                PowerUpCommand command = this.recorder.Run(this.playerIndex);
+                if (command != null)
+                    sendCommandToManipulator(command);
                 //Restart();
                 if (alive)
                 {
@@ -100,6 +118,13 @@ namespace ClearSky
 
                 }
             }
+        }
+
+        private void sendCommandToManipulator(PowerUpCommand command)
+        {
+            PhotonView manPhotonView = this.manipulator.GetComponent<PhotonView>();
+            if (command != null)
+                manPhotonView.RPC("savePowerUp", RpcTarget.All, command.type, command.parameter, command.playerIndex);
         }
 
         public void SetUsername()
@@ -273,6 +298,21 @@ namespace ClearSky
                 transform.position = (Vector3)stream.ReceiveNext();
             }
         }
-    }
 
+        public void Teleport(Vector3 newPosition)
+        {
+
+            // Move the player locally
+            transform.position = newPosition;
+
+            // Notify all other clients about the teleportation
+            photonView.RPC("RPC_Teleport", RpcTarget.Others, newPosition);
+        }
+
+        [PunRPC]
+        void RPC_Teleport(Vector3 newPosition)
+        {
+            transform.position = newPosition;
+        }
+    }
 }

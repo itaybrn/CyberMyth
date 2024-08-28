@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1374986223089383658}
   - component: {fileID: 5794094238322150513}
-  - component: {fileID: 5945217161625538064}
   - component: {fileID: 3265976174847189113}
   m_Layer: 0
   m_Name: Manipulator
@@ -49,27 +48,8 @@ MonoBehaviour:
   tagName: Time Manipulable
   maxSeconds: 20
   positionsPerSecond: 30
-  player: {fileID: 0}
   SWShot: SuperweaponShot
   clone: Clone
-  apiKey: 06177b9d555404d83de80ba2aed40bc0d808687b
-  filePath: D:\College\Year 3 Semester A\Unity\Time Tested\Project Files\audio.wav
---- !u!114 &5945217161625538064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1942047819648835296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a32e3e705be616f44921155e90c9d331, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  apiKey: 06177b9d555404d83de80ba2aed40bc0d808687b
-  filePath: E:\Eugene\E\My Documents\My Pictures\MTA\Unity\AfterReinstallingOS\Time-Tested\Project
-    Files\audio.wav
-  photonView: {fileID: 3265976174847189113}
 --- !u!114 &3265976174847189113
 MonoBehaviour:
   m_ObjectHideFlags: 0

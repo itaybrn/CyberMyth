@@ -85,18 +85,18 @@ public class VoiceCommand : MonoBehaviour
     private PowerUpCommand command = null; 
     private bool coroutineFinished = false;
 
-    public VoiceCommand(string apiKey, string filePath)
+    /*public VoiceCommand(string apiKey, string filePath)
     {
         this.apiKey = apiKey;
-        this.filePath = filePath;
-    }
+        this.filePath = Path.Combine(Application.dataPath, "audio.wav");
+    }*/
 
     void Start()
     {
-
+        this.filePath = Path.Combine(Application.dataPath, "audio.wav")/*filePath*/;
     }
 
-    public PowerUpCommand Run()
+    public PowerUpCommand Run(int playerID)
     {
         // Check for user input to start or stop recording
         if (Input.GetKeyDown(KeyCode.R))
@@ -108,7 +108,7 @@ public class VoiceCommand : MonoBehaviour
             }
             else
             {
-                StopRecording();
+                StopRecording(playerID);
             }
         }
         if (coroutineFinished)
@@ -135,7 +135,7 @@ public class VoiceCommand : MonoBehaviour
         Debug.LogWarning("Recording started...");
     }
 
-    void StopRecording()
+    void StopRecording(int playerID)
     {
         isRecording = false;
 
@@ -146,7 +146,7 @@ public class VoiceCommand : MonoBehaviour
         SaveToWAV(recordedClip, filePath);
 
         Debug.LogWarning("Recording stopped. Saved to: " + filePath);
-        StartCoroutine(TranscribeAudioFile(filePath));
+        StartCoroutine(TranscribeAudioFile(filePath, playerID));
     }
 
     static void SaveToWAV(AudioClip clip, string path)
@@ -193,7 +193,7 @@ public class VoiceCommand : MonoBehaviour
         }
     }
 
-    IEnumerator TranscribeAudioFile(string audioFilePath)
+    IEnumerator TranscribeAudioFile(string audioFilePath, int playerID)
     {
         // Check if the file exists
         if (!File.Exists(audioFilePath))
@@ -230,20 +230,20 @@ public class VoiceCommand : MonoBehaviour
             Debug.Log("Transcription result: " + www.downloadHandler.text);
 
             string commandStr = JSONParser.parse(www.downloadHandler.text);
-            this.command = timeRewind(commandStr);
+            this.command = timeRewind(commandStr, playerID);
             if (this.command == null)
-                this.command = timeStop(commandStr);
+                this.command = timeStop(commandStr, playerID);
             if (this.command == null)
-                this.command = swap(commandStr);
+                this.command = swap(commandStr, playerID);
             if (this.command == null)
-                this.command = superweapon(commandStr);
+                this.command = superweapon(commandStr, playerID);
             if (this.command == null)
-                this.command = clone(commandStr);
+                this.command = clone(commandStr, playerID);
             coroutineFinished = true;
         }
     }
 
-    public static PowerUpCommand timeRewind(string input)
+    public static PowerUpCommand timeRewind(string input, int playerID)
     {
         // Define the prefixes and suffixes
         string prefix = "Time rewind ";
@@ -262,7 +262,7 @@ public class VoiceCommand : MonoBehaviour
             // Try to convert the extracted parameter to a float
             if (float.TryParse(parameter, out float result))
             {
-                return new PowerUpCommand(PowerUp.TimeRewind, result);
+                return new PowerUpCommand(PowerUp.TimeRewind, result, playerID);
             }
         }
         Debug.LogWarning("not time rewind. Voice command:" + input);
@@ -271,7 +271,7 @@ public class VoiceCommand : MonoBehaviour
         return null;
     }
 
-    public static PowerUpCommand timeStop(string input)
+    public static PowerUpCommand timeStop(string input, int playerID)
     {
         // Define the prefixes and suffixes
         string prefix = "Time stop ";
@@ -290,7 +290,7 @@ public class VoiceCommand : MonoBehaviour
             // Try to convert the extracted parameter to a float
             if (float.TryParse(parameter, out float result))
             {
-                return new PowerUpCommand(PowerUp.TimeStop, result);
+                return new PowerUpCommand(PowerUp.TimeStop, result, playerID);
             }
         }
         Debug.LogWarning("not time stop. Voice command:" + input);
@@ -299,7 +299,7 @@ public class VoiceCommand : MonoBehaviour
         return null;
     }
 
-    public static PowerUpCommand swap(string input)
+    public static PowerUpCommand swap(string input, int playerID)
     {
         // Define the prefixes and suffixes
         string prefix = "Swap with ";
@@ -318,7 +318,7 @@ public class VoiceCommand : MonoBehaviour
             // Try to convert the extracted parameter to a float
             if (int.TryParse(parameter, out int result))
             {
-                return new PowerUpCommand(PowerUp.Swap, (float)result);
+                return new PowerUpCommand(PowerUp.Swap, (float)result, playerID);
             }
         }
         Debug.LogWarning("not swap. Voice command:" + input);
@@ -327,10 +327,10 @@ public class VoiceCommand : MonoBehaviour
         return null;
     }
 
-    public static PowerUpCommand superweapon(string input)
+    public static PowerUpCommand superweapon(string input, int playerID)
     {
         if (input == "Super weapon.")
-            return new PowerUpCommand(PowerUp.Superweapon, 0);
+            return new PowerUpCommand(PowerUp.Superweapon, playerID);
 
         Debug.LogWarning("not superweapon. Voice command:" + input);
 
@@ -338,10 +338,10 @@ public class VoiceCommand : MonoBehaviour
         return null;
     }
 
-    public static PowerUpCommand clone(string input)
+    public static PowerUpCommand clone(string input, int playerID)
     {
         if (input == "Clone.")
-            return new PowerUpCommand(PowerUp.Clone, 0);
+            return new PowerUpCommand(PowerUp.Clone, playerID);
 
         Debug.LogWarning("not clone. Voice command:" + input);
 

@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using Photon.Pun;
 using System.Collections;
+using PowerUpCommands;
 
 [RequireComponent(typeof(PhotonView))]
 public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
@@ -9,7 +10,8 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
     public float moveSpd;
     public float str;
     public Rigidbody2D myRigidbody2D;
-    public Manipulator manipulator;
+    public VoiceCommand recorder;
+    Manipulator manipultor;
 
     //Key Bindings
     public KeyCode MoveLeft;
@@ -54,8 +56,10 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
         if (photonView.IsMine)
         {
             StartCoroutine(NotifyGameManagerWhenReady());
-            this.manipulator = Instantiate(manipulator, new Vector3(0, 0), new Quaternion(0, 0, 0, 0));
-            this.manipulator.player = gameObject;
+            this.recorder = gameObject.GetComponent<VoiceCommand>();
+            this.manipultor = FindAnyObjectByType<Manipulator>();
+            //this.manipulator = Instantiate(manipulator, new Vector3(0, 0), new Quaternion(0, 0, 0, 0));
+            //this.manipulator.player = gameObject;
         }
     }
 
@@ -74,6 +78,9 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (photonView.IsMine)
         {
+            PowerUpCommand command = this.recorder.Run(0);
+            if (command != null)
+                sendCommandToManipulator(command);
             HandleInput();
             lastUpdateTime = PhotonNetwork.Time;
         }
@@ -84,6 +91,13 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
             transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * lerpSpeed);
             //transform.rotation = Quaternion.Lerp(transform.rotation, networkedRotation, Time.deltaTime * lerpSpeed);
         }
+    }
+
+    private void sendCommandToManipulator(PowerUpCommand command)
+    {
+        PhotonView manPhotonView = this.manipultor.GetComponent<PhotonView>();
+        if(command != null)
+            manPhotonView.RPC("savePowerUp", RpcTarget.All, command);
     }
 
     public void SetUsername()
