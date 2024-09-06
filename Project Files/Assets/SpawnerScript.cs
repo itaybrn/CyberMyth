@@ -3,11 +3,13 @@ using Photon.Pun;
 
 public class SpawnerScript : MonoBehaviour
 {
+    public float XCoordLeft, XCoordRight;
+    public float YCoord;
     void Start()
     {
         if (PhotonNetwork.IsConnectedAndReady) // Check if connected to Photon
         {
-            Vector3 spawnPosition = new Vector3(Random.Range(65.5f, 95), 15.5f, 0);
+            Vector3 spawnPosition = new Vector3(Random.Range(XCoordLeft, XCoordRight), YCoord, 0);
             PhotonNetwork.Instantiate("CollegeStudent/Demo/CollegeStudent Variant", spawnPosition, Quaternion.identity);
 
             Debug.Log($"Player created for {PhotonNetwork.LocalPlayer.NickName}");

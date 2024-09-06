@@ -1208,6 +1208,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e14eca9cac2b9b74089c8cd10c8755f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  XCoordLeft: 6
+  XCoordRight: 16
+  YCoord: 10.5
 --- !u!1001 &709180969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2313,7 +2316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2798169bf5e9baa4894e07b07b325dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: 
+  nextSceneName: Level3
 --- !u!1001 &1551774482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2613,7 +2616,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0d15c489b588fcb489631a59efe9a988, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 66c325b6beb724f42a97102d906a66eb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
