@@ -10,7 +10,7 @@ public class SpawnerScript : MonoBehaviour
         if (PhotonNetwork.IsConnectedAndReady) // Check if connected to Photon
         {
             Vector3 spawnPosition = new Vector3(Random.Range(XCoordLeft, XCoordRight), YCoord, 0);
-            PhotonNetwork.Instantiate("CollegeStudent/Demo/CollegeStudent Variant", spawnPosition, Quaternion.identity);
+            PhotonNetwork.Instantiate("Player", spawnPosition, Quaternion.identity);
 
             Debug.Log($"Player created for {PhotonNetwork.LocalPlayer.NickName}");
         }
