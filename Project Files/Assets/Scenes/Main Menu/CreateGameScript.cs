@@ -1,21 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
-using TMPro;
 
 public class CreateGameScript : MonoBehaviourPunCallbacks
 {
     public string DestinationScene;
     public string GameID;
     public int MaxPlayers;
+    private bool isTutorial;
 
     public void CreateGameRoom()
     {
         if (PhotonNetwork.IsConnectedAndReady)
         {
+            isTutorial = false;
+            Debug.Log("IN CREATE-GAME-SCRIPT");
+
             GameID = System.Guid.NewGuid().ToString();
             GameID = GameID.Substring(0, 4).ToUpper();
             Debug.Log($"Successfully generated game ID: {GameID}");
@@ -37,6 +37,11 @@ public class CreateGameScript : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.LoadLevel(DestinationScene);
+        if (!isTutorial)
+        {
+            Debug.Log($"!!! Loading scene: {DestinationScene}");
+            PhotonNetwork.LoadLevel(DestinationScene);
+        }
+        
     }
 }
