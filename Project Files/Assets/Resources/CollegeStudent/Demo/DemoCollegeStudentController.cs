@@ -28,6 +28,11 @@ namespace ClearSky
         private int direction = 1;
         bool isJumping = false;
         private bool alive = true;
+
+        public bool isAlive
+        {
+            get { return alive; }
+        }
         //private bool isKickboard = false;
 
         //Name of player
@@ -109,7 +114,7 @@ namespace ClearSky
                 if (alive)
                 {
                     //Hurt();
-                    Die();
+                    //Die();
                     //Attack();
                     JumpF();
                     //KickBoard();
@@ -166,6 +171,10 @@ namespace ClearSky
                 case 3:
                     anim.SetBool("isRun", true);
                     break;
+                case 4:
+                    anim.SetTrigger("die");
+                    alive = false;
+                    break;
                 default:
                     Debug.LogError("Not a valid animation, shouldn't get here");
                     break;
@@ -183,8 +192,18 @@ namespace ClearSky
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            anim.SetBool("isJump", false);
-            photonView.RPC("RPC_Animation", RpcTarget.Others, 0);
+            // Get the layer number corresponding to the 'Spikes' layer
+            int spikesLayer = LayerMask.NameToLayer("Spikes");
+
+            // Check if the collided object's layer matches the 'Spikes' layer
+            if (other.gameObject.layer == spikesLayer)
+                Die();
+
+            else
+            {
+                anim.SetBool("isJump", false);
+                photonView.RPC("RPC_Animation", RpcTarget.Others, 0);
+            }
         }
 
         /*void KickBoard()
@@ -303,14 +322,14 @@ namespace ClearSky
         }*/
         void Die()
         {
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                //isKickboard = false;
-                //anim.SetBool("isKickBoard", false);
-                anim.SetTrigger("die");
-                alive = false;
-            }
+
+            //isKickboard = false;
+            //anim.SetBool("isKickBoard", false);
+            anim.SetTrigger("die");
+            photonView.RPC("RPC_Animation", RpcTarget.Others, 4);
+            alive = false;
         }
+
         /*void Restart()
         {
             if (Input.GetKeyDown(KeyCode.Alpha0))

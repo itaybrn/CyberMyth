@@ -106,7 +106,7 @@ public class Manipulator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (this.players.Length <= 1)
+        if (this.players.Length <= PhotonNetwork.CurrentRoom.PlayerCount)
         {
             this.players = GameObject.FindGameObjectsWithTag("Player");
             Debug.LogWarning("players size: " + this.players.Length);
