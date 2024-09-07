@@ -89,6 +89,7 @@
     <Compile Include="Assets\Resources\CollegeStudent\Demo\DemoCollegeStudentController.cs" />
     <Compile Include="Assets\PPScript.cs" />
     <Compile Include="Assets\Scenes\Main Menu\ConnectToPhotonCloud.cs" />
+    <Compile Include="Assets\PlayerNameRotationDisabler.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\FriendItem.cs" />
     <Compile Include="Assets\VoiceCommand.cs" />
