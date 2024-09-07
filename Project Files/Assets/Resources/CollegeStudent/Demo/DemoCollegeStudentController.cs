@@ -149,9 +149,42 @@ namespace ClearSky
                 Debug.LogError("[RPC_SetUsername] Username TextMeshProUGUI component is not assigned!");
         }
 
+        [PunRPC]
+        void RPC_Animation(int animation)
+        {
+            switch(animation)
+            {
+                case 0:
+                    anim.SetBool("isJump", false);
+                    break;
+                case 1:
+                    anim.SetBool("isJump", true);
+                    break;
+                case 2:
+                    anim.SetBool("isRun", false);
+                    break;
+                case 3:
+                    anim.SetBool("isRun", true);
+                    break;
+                default:
+                    Debug.LogError("Not a valid animation, shouldn't get here");
+                    break;
+            }
+        }
+
+        [PunRPC]
+        void RPC_turnLeftOrRight(bool isLeft)
+        {
+            if(isLeft)
+                transform.localScale = new Vector3(direction * scale_x, scale_y, scale_z);
+            else
+                transform.localScale = new Vector3(direction * scale_x, scale_y, scale_z);
+        }
+
         private void OnTriggerEnter2D(Collider2D other)
         {
             anim.SetBool("isJump", false);
+            photonView.RPC("RPC_Animation", RpcTarget.Others, 0);
         }
 
         /*void KickBoard()
@@ -175,6 +208,7 @@ namespace ClearSky
             {*/
             Vector3 moveVelocity = Vector3.zero;
             anim.SetBool("isRun", false);
+            photonView.RPC("RPC_Animation", RpcTarget.Others, 2);
 
 
             if (Input.GetKey(MoveLeft) && !Input.GetKey(MoveRight))
@@ -183,8 +217,12 @@ namespace ClearSky
                 moveVelocity = Vector3.left;
 
                 transform.localScale = new Vector3(direction * scale_x, scale_y, scale_z);
+                photonView.RPC("RPC_turnLeftOrRight", RpcTarget.Others, true);
                 if (!anim.GetBool("isJump"))
+                {
                     anim.SetBool("isRun", true);
+                    photonView.RPC("RPC_Animation", RpcTarget.Others, 3);
+                }
 
             }
             if (Input.GetKey(MoveRight) && !Input.GetKey(MoveLeft))
@@ -193,8 +231,12 @@ namespace ClearSky
                 moveVelocity = Vector3.right;
 
                 transform.localScale = new Vector3(direction * scale_x, scale_y, scale_z);
+                photonView.RPC("RPC_turnLeftOrRight", RpcTarget.Others, false);
                 if (!anim.GetBool("isJump"))
+                {
                     anim.SetBool("isRun", true);
+                    photonView.RPC("RPC_Animation", RpcTarget.Others, 3);
+                }
 
             }
             transform.position += moveVelocity * movePower * Time.deltaTime;
@@ -227,6 +269,7 @@ namespace ClearSky
             {
                 isJumping = true;
                 anim.SetBool("isJump", true);
+                photonView.RPC("RPC_Animation", RpcTarget.Others, 1);
             }
             if (!isJumping)
             {
