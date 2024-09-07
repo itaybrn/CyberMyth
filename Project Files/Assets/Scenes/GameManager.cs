@@ -39,15 +39,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             {
                 allPlayersReady = true;
                 Debug.Log("All players are ready. Proceeding with game setup.");
-                TriggerUsernameDisplay();
             }
         }
-    }
-
-    [PunRPC]
-    private void TriggerUsernameDisplay()
-    {
-        foreach (var player in FindObjectsOfType<DemoCollegeStudentController>())
-            player.SetUsername();
     }
 }
