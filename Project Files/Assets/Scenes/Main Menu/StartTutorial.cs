@@ -16,7 +16,11 @@ public class StartTutorial : MonoBehaviourPunCallbacks
             RoomOptions roomOptions = new RoomOptions();
             roomOptions.MaxPlayers = (byte)1;
 
-            PlayerPrefs.SetString("PlayerName", "Host");
+            //PlayerPrefs.SetString("PlayerName", "Host");
+            string playerName = "Host";
+            PhotonNetwork.NickName = playerName;
+            Debug.Log($"New player's name: {playerName}");
+
             PhotonNetwork.CreateRoom("Tutorial", roomOptions);
         }
         else
@@ -28,7 +32,6 @@ public class StartTutorial : MonoBehaviourPunCallbacks
     {
         if (isTutorial)
         {
-            Debug.Log($"!!! Loading scene: Tutorial1");
             SceneManager.LoadScene("Tutorial1");
         }
     }

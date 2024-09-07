@@ -39,7 +39,6 @@ public class CreateGameScript : MonoBehaviourPunCallbacks
     {
         if (!isTutorial)
         {
-            Debug.Log($"!!! Loading scene: {DestinationScene}");
             PhotonNetwork.LoadLevel(DestinationScene);
         }
         

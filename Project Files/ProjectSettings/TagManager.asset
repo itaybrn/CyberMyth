@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Time Manipulable
   - Manipulator
+  - Speechbubble
   layers:
   - Default
   - TransparentFX

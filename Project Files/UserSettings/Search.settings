@@ -11,6 +11,9 @@ scopes = {
 	"last_search.E8DA15E5" = ""
 	"OpenInspectorPreview.E8DA15E5" = "0"
 	"currentGroup.E8DA15E5" = "asset"
+	"last_search.310DEAF3" = ""
+	"OpenInspectorPreview.310DEAF3" = "0"
+	"currentGroup.310DEAF3" = "all"
 }
 providers = {
 	adb = {
@@ -62,6 +65,7 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	""
 ]
 searchItemFavorites = [
 ]
