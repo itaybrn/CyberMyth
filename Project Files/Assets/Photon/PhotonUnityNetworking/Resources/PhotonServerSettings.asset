@@ -50,6 +50,8 @@ MonoBehaviour:
   - ReloadScene
   - RPC_Animation
   - RPC_turnLeftOrRight
+  - RPC_isPressed
+  - RPC_press
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

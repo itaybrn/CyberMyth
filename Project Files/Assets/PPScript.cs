@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class PPScript : MonoBehaviour
+public class PPScript : MonoBehaviourPunCallbacks
 {
     public Transform plate;             //The transform of the part of the pressure plate that moves
     public float pressDepth = 0.25f;    //The depth the plate should press down
@@ -39,6 +40,7 @@ public class PPScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Time Manipulable"))
         {
             isPressed = true;
+            photonView.RPC("RPC_press", RpcTarget.Others, true);
 
             if (releaseCoroutine != null)
             {
@@ -58,7 +60,12 @@ public class PPScript : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         isPressed = false;
+        photonView.RPC("RPC_press", RpcTarget.Others, false);
     }
 
-
+    [PunRPC]
+    void RPC_press(bool pressed)
+    {
+        isPressed = pressed;
+    }
 }
