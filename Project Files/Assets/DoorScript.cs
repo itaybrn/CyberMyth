@@ -7,11 +7,13 @@ public class DoorScript : MonoBehaviour
     public Sprite doorOpenTexture;
     private PPScript[] pressurePlates;
     private bool isOpen;
+    LevelTransitioner transitioner;
 
     void Start()
     {
         // Find all PressurePlate instances in the scene
         pressurePlates = FindObjectsOfType<PPScript>();
+        transitioner = FindAnyObjectByType<LevelTransitioner>();
     }
 
     // Update is called once per frame
@@ -62,7 +64,7 @@ public class DoorScript : MonoBehaviour
             Destroy(player);  // Here is the destroy command
 
             // Notify LevelTransitioner that a player has exited
-            LevelTransitioner.instance.PlayerExited();
+            transitioner.PlayerExited();
         }
         else
         {
