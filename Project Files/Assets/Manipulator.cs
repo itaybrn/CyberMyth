@@ -5,6 +5,7 @@ using UnityEngine;
 using PowerUpCommands;
 using Photon.Pun;
 using ClearSky;
+using Superweapon;
 
 public class PositionStatus
 {
@@ -67,7 +68,7 @@ public class TMObject
 }
 
 [System.Serializable]
-public class Manipulator : MonoBehaviour
+public class Manipulator : MonoBehaviourPunCallbacks
 {
     public string tagName;
     public int maxSeconds;
@@ -106,7 +107,7 @@ public class Manipulator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (this.players.Length <= PhotonNetwork.CurrentRoom.PlayerCount)
+        if (this.players.Length < PhotonNetwork.CurrentRoom.PlayerCount)
         {
             this.players = GameObject.FindGameObjectsWithTag("Player");
             Debug.LogWarning("players size: " + this.players.Length);
@@ -200,10 +201,7 @@ public class Manipulator : MonoBehaviour
             switch (command.type)
             {
                 case PowerUp.TimeRewind:
-                    if (this.timeStop > 0)
-                        this.timeStop = 0;
-                    foreach (TMObject obj in objects)  
-                        obj.rewindPosition(command.parameter);
+                    photonView.RPC("RPC_rewindTime", RpcTarget.All, command.parameter);
                     break;
                 case PowerUp.TimeStop:
                     this.timeStop = command.parameter;
@@ -212,7 +210,15 @@ public class Manipulator : MonoBehaviour
                     swapPositions(command, player);
                     break;
                 case PowerUp.Superweapon:
-                    PhotonNetwork.Instantiate(SWShot, new Vector3(player.transform.position.x, player.transform.position.y - 1), player.transform.rotation);
+                    PhotonNetwork.Instantiate(SWShot, new Vector3(player.transform.position.x, player.transform.position.y + 5), player.transform.rotation);
+                    superweaponScript[] SWShotArray = FindObjectsByType<superweaponScript>(FindObjectsSortMode.None);
+                    foreach (superweaponScript shot in SWShotArray)
+                    {
+                        if (player.transform.localScale.x < 0) //if the player faces left
+                            shot.setDirection(true); //SWShot left
+                        else
+                            shot.setDirection(false); //SWShot right
+                    }
                     break;
                 case PowerUp.Clone:
                     PhotonNetwork.Instantiate(clone, new Vector3(player.transform.position.x, player.transform.position.y + 4), player.transform.rotation);
@@ -257,8 +263,17 @@ public class Manipulator : MonoBehaviour
             Debug.LogError("object is not time manipulable");
         else
         {
-            toBeDestroyed.obj.transform.position = toBeDestroyed.obj.transform.position + Vector3.up * 40;
+            toBeDestroyed.obj.transform.position = toBeDestroyed.obj.transform.position + Vector3.down * 250;
             toBeDestroyed.destroyed = true;
         }
+    }
+
+    [PunRPC]
+    public void RPC_rewindTime(float parameter)
+    {
+        if (this.timeStop > 0)
+            this.timeStop = 0;
+        foreach (TMObject obj in objects)
+            obj.rewindPosition(parameter);
     }
 }

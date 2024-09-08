@@ -52,6 +52,9 @@ MonoBehaviour:
   - RPC_turnLeftOrRight
   - RPC_isPressed
   - RPC_press
+  - RPC_Direction
+  - RPC_destroyObject
+  - RPC_rewindTime
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
