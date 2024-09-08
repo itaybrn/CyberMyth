@@ -11,8 +11,8 @@ PrefabInstance:
     - target: {fileID: 1011706924715627487, guid: 3535d188847af964080315fb683789b9, type: 3}
       propertyPath: m_text
       value: Notice how each time-manipulated object has a number next to it? All
-        you have to do is press the [R] key, say "Swap" and the number of the item,
-        and press [R] again!
+        you have to do is press the [R] key, say "Swap with" and the number of the
+        item, and press [R] again!
       objectReference: {fileID: 0}
     - target: {fileID: 1011706924715627487, guid: 3535d188847af964080315fb683789b9, type: 3}
       propertyPath: m_margin.w
@@ -132,7 +132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4141750618490100328, guid: 3535d188847af964080315fb683789b9, type: 3}
       propertyPath: m_Name
-      value: Speechbubble 3-2 Canvas Variant
+      value: Speechbubble 3-2 Canvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

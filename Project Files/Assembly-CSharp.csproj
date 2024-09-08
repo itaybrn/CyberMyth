@@ -96,6 +96,7 @@
     <Compile Include="Assets\VoiceCommand.cs" />
     <Compile Include="Assets\YouDiedMessage.cs" />
     <Compile Include="Assets\superweaponScript.cs" />
+    <Compile Include="Assets\Scenes\Main Menu\ExitButtonScript.cs" />
     <Compile Include="Assets\Scenes\Main Menu\CreateGameScript.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
