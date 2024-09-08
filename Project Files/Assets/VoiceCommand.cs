@@ -195,6 +195,7 @@ public class VoiceCommand : MonoBehaviour
 
     IEnumerator TranscribeAudioFile(string audioFilePath, int playerID)
     {
+        float startTime = Time.time;
         // Check if the file exists
         if (!File.Exists(audioFilePath))
         {
@@ -226,11 +227,12 @@ public class VoiceCommand : MonoBehaviour
         }
         else
         {
+            float addedTime = Time.time - startTime;
             // Print the transcription result
             Debug.Log("Transcription result: " + www.downloadHandler.text);
 
             string commandStr = JSONParser.parse(www.downloadHandler.text);
-            this.command = timeRewind(commandStr, playerID);
+            this.command = timeRewind(commandStr, playerID, addedTime);
             if (this.command == null)
                 this.command = timeStop(commandStr, playerID);
             if (this.command == null)
@@ -243,7 +245,7 @@ public class VoiceCommand : MonoBehaviour
         }
     }
 
-    public static PowerUpCommand timeRewind(string input, int playerID)
+    public static PowerUpCommand timeRewind(string input, int playerID, float addedTime)
     {
         // Define the prefixes and suffixes
         string prefix = "Time rewind ";
@@ -262,7 +264,7 @@ public class VoiceCommand : MonoBehaviour
             // Try to convert the extracted parameter to a float
             if (float.TryParse(parameter, out float result))
             {
-                return new PowerUpCommand(PowerUp.TimeRewind, result, playerID);
+                return new PowerUpCommand(PowerUp.TimeRewind, result + addedTime, playerID);
             }
         }
         Debug.LogWarning("not time rewind. Voice command:" + input);

@@ -322,12 +322,14 @@ namespace ClearSky
         }*/
         void Die()
         {
-
             //isKickboard = false;
             //anim.SetBool("isKickBoard", false);
-            anim.SetTrigger("die");
-            photonView.RPC("RPC_Animation", RpcTarget.Others, 4);
-            alive = false;
+            if (alive)
+            {
+                anim.SetTrigger("die");
+                photonView.RPC("RPC_Animation", RpcTarget.Others, 4);
+                alive = false;
+            }
         }
 
         /*void Restart()
