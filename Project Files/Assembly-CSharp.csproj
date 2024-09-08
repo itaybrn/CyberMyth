@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
     <Compile Include="Assets\Scenes\Main Menu\StartTutorial.cs" />
+    <Compile Include="Assets\NotEnoughPlayers.cs" />
     <Compile Include="Assets\Scenes\Main Menu\JoinRoomScript.cs" />
     <Compile Include="Assets\Scenes\Main Menu\LoopingBGHandler.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />

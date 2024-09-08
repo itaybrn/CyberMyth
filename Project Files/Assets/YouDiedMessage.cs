@@ -7,7 +7,8 @@ using ClearSky;
 public class YouDiedMessage : MonoBehaviour
 {
     public GameObject youDiedMessageUI;
-    // Start is called before the first frame update
+    public GameObject notEnoughPlayersUI;
+
     void Start()
     {
         youDiedMessageUI.SetActive(false);
@@ -19,7 +20,7 @@ public class YouDiedMessage : MonoBehaviour
         DemoCollegeStudentController[] players = FindObjectsOfType<DemoCollegeStudentController>();
         foreach (DemoCollegeStudentController player in players)
         {
-            if (!player.isAlive)
+            if (!player.isAlive & !notEnoughPlayersUI.activeSelf)
                 youDiedMessageUI.SetActive(true);
         }
     }
