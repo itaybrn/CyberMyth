@@ -33,7 +33,11 @@ public class PPScript : MonoBehaviourPunCallbacks
         if (isPressed)
             plate.localPosition = Vector3.Lerp(plate.localPosition, pressedPosition, Time.deltaTime * pressSpeed);
         else
+        {
             plate.localPosition = Vector3.Lerp(plate.localPosition, initialPosition, Time.deltaTime * pressSpeed);
+            if(releaseCoroutine == null)
+                releaseCoroutine = StartCoroutine(ReleasePlateAfterDelay(releaseDelay));
+        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
