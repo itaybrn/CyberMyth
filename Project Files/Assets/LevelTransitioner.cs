@@ -34,7 +34,7 @@ public class LevelTransitioner : MonoBehaviour
         playersExited++;
         if (playersExited >= totalPlayers)
         {
-            //SceneManager.LoadScene(nextSceneName);
+            SceneManager.LoadScene(nextSceneName);
             Debug.LogWarning("Should transition to next level");
         }
     }

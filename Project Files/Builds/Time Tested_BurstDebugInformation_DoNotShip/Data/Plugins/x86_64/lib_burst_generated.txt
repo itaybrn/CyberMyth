@@ -1,4 +1,4 @@
-Library: D:\College\Year 3 Semester A\Unity\Time Tested\Project Files\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+Library: E:\Eugene\E\My Documents\My Pictures\MTA\Unity\AfterReinstallingOS\Time-Tested\Project Files\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --platform=Windows
 --backend=burst-llvm-16
 --target=X64_SSE2
@@ -71,10 +71,10 @@ Library: D:\College\Year 3 Semester A\Unity\Time Tested\Project Files\Temp\Burst
 --assembly-defines=mscorlib;
 --linker-options=PdbAltPath="Time Tested_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=D:\College\Year 3 Semester A\Unity\Time Tested\Project Files\Temp\Burst
+--temp-folder=E:\Eugene\E\My Documents\My Pictures\MTA\Unity\AfterReinstallingOS\Time-Tested\Project Files\Temp\Burst
 --key-folder=C:/Program Files/Unity/Hub/Editor/2022.3.21f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=D:\College\Year 3 Semester A\Unity\Time Tested\Project Files\Library\Burst
---output=D:\College\Year 3 Semester A\Unity\Time Tested\Project Files\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--decode-folder=E:\Eugene\E\My Documents\My Pictures\MTA\Unity\AfterReinstallingOS\Time-Tested\Project Files\Library\Burst
+--output=E:\Eugene\E\My Documents\My Pictures\MTA\Unity\AfterReinstallingOS\Time-Tested\Project Files\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.Burst.BurstCompiler+BurstCompilerHelper, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::IsBurstEnabled()--8c2be93e18276203cbd918daa2748a10
@@ -180,10 +180,10 @@ Library: D:\College\Year 3 Semester A\Unity\Time Tested\Project Files\Temp\Burst
 --assembly-defines=mscorlib;
 --linker-options=PdbAltPath="Time Tested_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=D:\College\Year 3 Semester A\Unity\Time Tested\Project Files\Temp\Burst
+--temp-folder=E:\Eugene\E\My Documents\My Pictures\MTA\Unity\AfterReinstallingOS\Time-Tested\Project Files\Temp\Burst
 --key-folder=C:/Program Files/Unity/Hub/Editor/2022.3.21f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=D:\College\Year 3 Semester A\Unity\Time Tested\Project Files\Library\Burst
---output=D:\College\Year 3 Semester A\Unity\Time Tested\Project Files\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--decode-folder=E:\Eugene\E\My Documents\My Pictures\MTA\Unity\AfterReinstallingOS\Time-Tested\Project Files\Library\Burst
+--output=E:\Eugene\E\My Documents\My Pictures\MTA\Unity\AfterReinstallingOS\Time-Tested\Project Files\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.Burst.BurstCompiler+BurstCompilerHelper, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::IsBurstEnabled()--8c2be93e18276203cbd918daa2748a10

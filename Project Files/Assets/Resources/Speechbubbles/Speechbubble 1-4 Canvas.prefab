@@ -14,8 +14,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 981598868741474327, guid: 2020098d849166c47a1bacee8a1e5479, type: 3}
       propertyPath: m_text
-      value: 'The door to the next level will only open if you step on ALL of the
-        pressure plates in the room AT THE SAME TIME. '
+      value: 'The door to the next level will only open if you step on ALL the pressure
+        plates in the room AT THE SAME TIME. '
       objectReference: {fileID: 0}
     - target: {fileID: 981598868741474327, guid: 2020098d849166c47a1bacee8a1e5479, type: 3}
       propertyPath: m_margin.w
@@ -31,7 +31,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 981598868741474327, guid: 2020098d849166c47a1bacee8a1e5479, type: 3}
       propertyPath: m_margin.z
-      value: -204.84479
+      value: -194.43582
       objectReference: {fileID: 0}
     - target: {fileID: 981598868741474327, guid: 2020098d849166c47a1bacee8a1e5479, type: 3}
       propertyPath: m_fontStyle
@@ -147,7 +147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4246732615457161632, guid: 2020098d849166c47a1bacee8a1e5479, type: 3}
       propertyPath: m_Name
-      value: Speechbubble 1-4 Canvas Variant
+      value: Speechbubble 1-4 Canvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

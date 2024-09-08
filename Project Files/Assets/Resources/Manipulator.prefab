@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagName: Time Manipulable
-  maxSeconds: 20
+  maxSeconds: 60
   positionsPerSecond: 30
   SWShot: SuperweaponShot
   clone: Clone
