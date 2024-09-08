@@ -1,7 +1,8 @@
 using Photon.Pun;
 using UnityEngine;
+using TMPro;
 
-public class BoxMoveSynced : MonoBehaviour, IPunObservable
+public class BoxMoveSynced : HasID, IPunObservable
 {
     public float moveSpd;
     private Vector2 networkedPosition;

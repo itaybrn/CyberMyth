@@ -11,9 +11,9 @@ PrefabInstance:
     - target: {fileID: 981598868741474327, guid: 2020098d849166c47a1bacee8a1e5479, type: 3}
       propertyPath: m_text
       value: 'You can now start our real trial stages and join the rest of our lab
-        rats-- EHHH, our, testers, that is! Uh...
+        rats-- EHHH, our, testers, that is!
 
-        good luck!'
+        ...good luck!'
       objectReference: {fileID: 0}
     - target: {fileID: 981598868741474327, guid: 2020098d849166c47a1bacee8a1e5479, type: 3}
       propertyPath: m_margin.w
@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4246732615457161632, guid: 2020098d849166c47a1bacee8a1e5479, type: 3}
       propertyPath: m_Name
-      value: Speechbubble 4-2 Canvas Variant
+      value: Speechbubble 4-2 Canvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

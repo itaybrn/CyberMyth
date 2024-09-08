@@ -6,6 +6,7 @@ using PowerUpCommands;
 using Photon.Pun;
 using ClearSky;
 using Superweapon;
+using TMPro;
 
 public class PositionStatus
 {
@@ -87,7 +88,6 @@ public class Manipulator : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        //this.recorder = gameObject.GetComponent<VoiceCommand>();
         CommandSerializer.Register();
 
         this.timer = 0;
@@ -99,8 +99,7 @@ public class Manipulator : MonoBehaviourPunCallbacks
         Debug.LogWarning("players size: " + this.players.Length);
         foreach (GameObject obj in objectsInLayer)
         {
-            TMObject newObj = new(obj, maxSeconds, positionsPerSecond);
-            this.objects.Add(newObj);
+           SendTextBoxToTMObject(obj);
         }
     }
 
@@ -120,6 +119,20 @@ public class Manipulator : MonoBehaviourPunCallbacks
             this.commandsToExecute.Clear();
         }
         
+    }
+
+    void SendTextBoxToTMObject(GameObject obj)
+    {
+        if (obj.GetComponent<HasID>() != null)
+        {
+            HasID HasIDObject = obj.GetComponent<HasID>();
+            if (HasIDObject != null)
+            {
+                TMObject newObj = new(obj, maxSeconds, positionsPerSecond);
+                objects.Add(newObj);
+                HasIDObject.DisplayID(objects.Count);
+            }
+        }
     }
 
     void SavePositions()
@@ -165,8 +178,7 @@ public class Manipulator : MonoBehaviourPunCallbacks
 
                 if(!exists)
                 {
-                    TMObject newObj = new(obj, maxSeconds, positionsPerSecond);
-                    this.objects.Add(newObj);
+                    SendTextBoxToTMObject(obj);
                 }
             }
         }

@@ -49,7 +49,7 @@ MonoBehaviour:
   maxSeconds: 60
   positionsPerSecond: 30
   SWShot: SuperweaponShot
-  clone: Clone
+  clone: TMObjects/Clone
 --- !u!114 &3265976174847189113
 MonoBehaviour:
   m_ObjectHideFlags: 0
