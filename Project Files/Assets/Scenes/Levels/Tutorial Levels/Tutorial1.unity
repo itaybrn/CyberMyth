@@ -2122,6 +2122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextSceneName: Tutorial2
+  isFinalLevel: 0
 --- !u!4 &803202290
 Transform:
   m_ObjectHideFlags: 0
