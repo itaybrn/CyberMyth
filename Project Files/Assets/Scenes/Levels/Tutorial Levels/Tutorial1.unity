@@ -2709,67 +2709,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 952351091}
   m_CullTransparentMesh: 1
---- !u!1001 &981773002
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4086510212468205048, guid: 92ad1c8311e5fc84099f2ef2752a38ab, type: 3}
-      propertyPath: m_Name
-      value: Pressure Plate
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383085489511429353, guid: 92ad1c8311e5fc84099f2ef2752a38ab, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 134.87
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383085489511429353, guid: 92ad1c8311e5fc84099f2ef2752a38ab, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 10.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383085489511429353, guid: 92ad1c8311e5fc84099f2ef2752a38ab, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383085489511429353, guid: 92ad1c8311e5fc84099f2ef2752a38ab, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383085489511429353, guid: 92ad1c8311e5fc84099f2ef2752a38ab, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383085489511429353, guid: 92ad1c8311e5fc84099f2ef2752a38ab, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383085489511429353, guid: 92ad1c8311e5fc84099f2ef2752a38ab, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383085489511429353, guid: 92ad1c8311e5fc84099f2ef2752a38ab, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383085489511429353, guid: 92ad1c8311e5fc84099f2ef2752a38ab, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383085489511429353, guid: 92ad1c8311e5fc84099f2ef2752a38ab, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7803496856933555822, guid: 92ad1c8311e5fc84099f2ef2752a38ab, type: 3}
-      propertyPath: sceneViewId
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 92ad1c8311e5fc84099f2ef2752a38ab, type: 3}
 --- !u!1 &1010084590
 GameObject:
   m_ObjectHideFlags: 0
@@ -3076,6 +3015,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1143627188
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4086510212468205048, guid: 92ad1c8311e5fc84099f2ef2752a38ab, type: 3}
+      propertyPath: m_Name
+      value: Pressure Plate T 1-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7383085489511429353, guid: 92ad1c8311e5fc84099f2ef2752a38ab, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 134.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 7383085489511429353, guid: 92ad1c8311e5fc84099f2ef2752a38ab, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7383085489511429353, guid: 92ad1c8311e5fc84099f2ef2752a38ab, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7383085489511429353, guid: 92ad1c8311e5fc84099f2ef2752a38ab, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7383085489511429353, guid: 92ad1c8311e5fc84099f2ef2752a38ab, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7383085489511429353, guid: 92ad1c8311e5fc84099f2ef2752a38ab, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7383085489511429353, guid: 92ad1c8311e5fc84099f2ef2752a38ab, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7383085489511429353, guid: 92ad1c8311e5fc84099f2ef2752a38ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7383085489511429353, guid: 92ad1c8311e5fc84099f2ef2752a38ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7383085489511429353, guid: 92ad1c8311e5fc84099f2ef2752a38ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7803496856933555822, guid: 92ad1c8311e5fc84099f2ef2752a38ab, type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 92ad1c8311e5fc84099f2ef2752a38ab, type: 3}
 --- !u!1 &1263215870
 GameObject:
   m_ObjectHideFlags: 0
@@ -4895,7 +4895,6 @@ SceneRoots:
   - {fileID: 325969374}
   - {fileID: 803202290}
   - {fileID: 1302264153}
-  - {fileID: 981773002}
   - {fileID: 1866277883}
   - {fileID: 553291006}
   - {fileID: 1054948890}
@@ -4906,3 +4905,4 @@ SceneRoots:
   - {fileID: 94942478}
   - {fileID: 1781918615}
   - {fileID: 168553855}
+  - {fileID: 1143627188}
