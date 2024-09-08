@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 using System.IO;
 using PowerUpCommands;
 using Photon.Pun;
+using recordingIcon;
 
 public class JSONParser
 {
@@ -84,6 +85,7 @@ public class VoiceCommand : MonoBehaviour
     private AudioClip recordedClip;
     private PowerUpCommand command = null; 
     private bool coroutineFinished = false;
+    private recordingIconScript icon;
 
     /*public VoiceCommand(string apiKey, string filePath)
     {
@@ -93,7 +95,8 @@ public class VoiceCommand : MonoBehaviour
 
     void Start()
     {
-        this.filePath = Path.Combine(Application.dataPath, "audio.wav")/*filePath*/;
+        this.filePath = Path.Combine(Application.dataPath, "audio.wav");
+        this.icon = FindAnyObjectByType<recordingIconScript>();
     }
 
     public PowerUpCommand Run(int playerID)
@@ -113,6 +116,7 @@ public class VoiceCommand : MonoBehaviour
         }
         if (coroutineFinished)
         {
+            this.icon.changeTexture(recordingIconScript.Icon.notRecording);
             PowerUpCommand toReturn = this.command;
             if (this.command == null)
                 Debug.LogWarning("unknown voice command");
@@ -128,6 +132,7 @@ public class VoiceCommand : MonoBehaviour
     void StartRecording()
     {
         isRecording = true;
+        this.icon.changeTexture(recordingIconScript.Icon.recording);
 
         // Start recording from the default microphone
         recordedClip = Microphone.Start(null, false, 10, AudioSettings.outputSampleRate);
@@ -144,6 +149,8 @@ public class VoiceCommand : MonoBehaviour
 
         // Save the recorded audio to a WAV file
         SaveToWAV(recordedClip, filePath);
+
+        this.icon.changeTexture(recordingIconScript.Icon.analyzing);
 
         Debug.LogWarning("Recording stopped. Saved to: " + filePath);
         StartCoroutine(TranscribeAudioFile(filePath, playerID));
