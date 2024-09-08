@@ -20,8 +20,11 @@ public class YouDiedMessage : MonoBehaviour
         DemoCollegeStudentController[] players = FindObjectsOfType<DemoCollegeStudentController>();
         foreach (DemoCollegeStudentController player in players)
         {
-            if (!player.isAlive & !notEnoughPlayersUI.activeSelf)
-                youDiedMessageUI.SetActive(true);
+            if (!player.isAlive)
+            {
+                if(notEnoughPlayersUI == null || !notEnoughPlayersUI.activeSelf)
+                    youDiedMessageUI.SetActive(true);
+            }
         }
     }
 }

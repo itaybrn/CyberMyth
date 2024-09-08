@@ -22,6 +22,7 @@ public class PPScript : MonoBehaviourPunCallbacks
 
     void Start()
     {
+        isPressed = false;
         initialPosition = plate.localPosition;
         pressedPosition = initialPosition - new Vector3(0, pressDepth, 0);
     }
