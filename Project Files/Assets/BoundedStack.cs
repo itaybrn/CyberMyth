@@ -17,8 +17,9 @@ public class BoundedStack<T>
     {
         if (stack.Count == capacity)
         {
-            stack.RemoveFirst(); // Remove oldest element
+            stack.RemoveFirst();
         }
+
         Debug.Log(stack.Count + " items in stack.");
         stack.AddLast(item);
     }
@@ -29,6 +30,7 @@ public class BoundedStack<T>
         {
             throw new InvalidOperationException("Stack is empty");
         }
+
         T item = stack.Last.Value;
         stack.RemoveLast();
         Debug.Log(stack.Count + " items in stack.");
@@ -41,6 +43,7 @@ public class BoundedStack<T>
         {
             throw new InvalidOperationException("Stack is empty");
         }
+
         return stack.Last.Value;
     }
 

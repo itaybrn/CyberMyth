@@ -22,10 +22,8 @@ public class SpawnerScript : MonoBehaviour
 
     private IEnumerator DelayedStart()
     {
-        // Wait for a specified amount of time
-        yield return new WaitForSeconds(delayBeforeStart);
+        yield return new WaitForSeconds(delayBeforeStart); //Allows time for everything to load correctly
 
-        // Initialize or reset variables here
         InitializeGame();
     }
 

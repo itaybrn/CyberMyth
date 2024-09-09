@@ -1,4 +1,3 @@
-using UnityEngine;
 using ExitGames.Client.Photon;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
@@ -27,9 +26,7 @@ namespace PowerUpCommands
             this.playerIndex = playerID;
         }
 
-        public PowerUpCommand(PowerUp p, int playerID) : this(p, 0, playerID)
-        {
-        }
+        public PowerUpCommand(PowerUp p, int playerID) : this(p, 0, playerID) {}
     }
 
     public static class CommandSerializer
@@ -47,6 +44,7 @@ namespace PowerUpCommands
             {
                 BinaryFormatter formatter = new BinaryFormatter();
                 formatter.Serialize(memoryStream, command);
+
                 return memoryStream.ToArray();
             }
         }
@@ -56,6 +54,7 @@ namespace PowerUpCommands
             using (MemoryStream memoryStream = new MemoryStream(data))
             {
                 BinaryFormatter formatter = new BinaryFormatter();
+
                 return formatter.Deserialize(memoryStream);
             }
         }

@@ -1,14 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
 public class PPScript : MonoBehaviourPunCallbacks
 {
-    public Transform plate;             //The transform of the part of the pressure plate that moves
-    public float pressDepth = 0.25f;    //The depth the plate should press down
-    public float pressSpeed = 2f;       //The speed at which the plate moves
-    public float releaseDelay = 0.2f;   //Delay before the plate is released
+    public Transform plate;             
+    public float pressDepth = 0.25f;    
+    public float pressSpeed = 2f;       
+    public float releaseDelay = 0.2f;   
 
     private Vector3 initialPosition;
     private Vector3 pressedPosition;
@@ -17,7 +16,7 @@ public class PPScript : MonoBehaviourPunCallbacks
 
     public bool IsPressed
     {
-        get { return this.isPressed; }
+        get { return isPressed; }
     }
 
     void Start()
@@ -27,7 +26,6 @@ public class PPScript : MonoBehaviourPunCallbacks
         pressedPosition = initialPosition - new Vector3(0, pressDepth, 0);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (isPressed)
@@ -35,7 +33,8 @@ public class PPScript : MonoBehaviourPunCallbacks
         else
         {
             plate.localPosition = Vector3.Lerp(plate.localPosition, initialPosition, Time.deltaTime * pressSpeed);
-            if(releaseCoroutine == null)
+            
+            if (releaseCoroutine == null)
                 releaseCoroutine = StartCoroutine(ReleasePlateAfterDelay(releaseDelay));
         }
     }

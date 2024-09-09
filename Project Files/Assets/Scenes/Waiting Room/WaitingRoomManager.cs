@@ -4,7 +4,7 @@ using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using ExitGames.Client.Photon;
+using System.Collections;
 
 public class WaitingRoomManager : MonoBehaviourPunCallbacks
 {
@@ -37,7 +37,6 @@ public class WaitingRoomManager : MonoBehaviourPunCallbacks
             Debug.Log($"New player's name: {playerName}");
 
             UpdatePlayerList();
-            //CheckStartButton();
         }
         else
         {
@@ -79,66 +78,53 @@ public class WaitingRoomManager : MonoBehaviourPunCallbacks
     {
         statusText.text = $"Players in room: {PhotonNetwork.CurrentRoom.PlayerCount} / {MaxPlayers}";
 
-        Hashtable expectedPlayerCount = new Hashtable();
+        ExitGames.Client.Photon.Hashtable expectedPlayerCount = new ExitGames.Client.Photon.Hashtable();
         expectedPlayerCount.Add("ExpectedPlayerCount", PhotonNetwork.CurrentRoom.PlayerCount);
         PhotonNetwork.CurrentRoom.SetCustomProperties(expectedPlayerCount);
 
-        // Iterate over all players in the room
         foreach (Player player in PhotonNetwork.PlayerList)
         {
-            // Check if the player already has a name object
+            //If player has a name object
             if (playerNameObjects.TryGetValue(player.ActorNumber, out GameObject existingNameObject))
             {
-                // Update the text for the existing player name object
                 TextMeshProUGUI textComponent = existingNameObject.GetComponent<TextMeshProUGUI>();
                 if (textComponent != null)
-                {
                     textComponent.text = player.NickName;
-                    Debug.Log($"Updating name for {player.NickName}");
-                }
                 else
-                {
                     Debug.LogError("TextMeshProUGUI component not found on existing name object.");
-                }
             }
             else
             {
-                // Create a new name object for the new player
                 GameObject newNameObject = Instantiate(playerNamePrefab, playerNameContainer);
                 TextMeshProUGUI textComponent = newNameObject.GetComponent<TextMeshProUGUI>();
                 if (textComponent != null)
-                {
                     textComponent.text = player.NickName;
-                    Debug.Log($"Creating name for {player.NickName}");
-                }
                 else
-                {
                     Debug.LogError("TextMeshProUGUI component not found on prefab.");
-                }
+
                 playerNameObjects.Add(player.ActorNumber, newNameObject);
             }
         }
 
-        // Remove name objects for players who have left the room
+        //Remove name objects for players who have left the room
         List<int> actorNumbersToRemove = new List<int>();
-        foreach (var kvp in playerNameObjects)
+        foreach (var keyAndValue in playerNameObjects)
         {
-            if (!PhotonNetwork.CurrentRoom.Players.ContainsKey(kvp.Key))
+            if (!PhotonNetwork.CurrentRoom.Players.ContainsKey(keyAndValue.Key))
             {
-                Destroy(kvp.Value);
-                actorNumbersToRemove.Add(kvp.Key);
+                Destroy(keyAndValue.Value);
+                actorNumbersToRemove.Add(keyAndValue.Key);
             }
         }
 
-        // Clean up the dictionary
+        //Clean up the dictionary
         foreach (int actorNumber in actorNumbersToRemove)
-        {
             playerNameObjects.Remove(actorNumber);
-        }
     }
 
-    void CheckStartButton()
+    private void CheckStartButton()
     {
+        Debug.Log("Players in room: " + PhotonNetwork.CurrentRoom.PlayerCount);
         startGameButton.interactable = PhotonNetwork.CurrentRoom.PlayerCount >= MinPlayers;
     }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using ClearSky;
 
@@ -14,7 +12,6 @@ public class YouDiedMessage : MonoBehaviour
         youDiedMessageUI.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         DemoCollegeStudentController[] players = FindObjectsOfType<DemoCollegeStudentController>();

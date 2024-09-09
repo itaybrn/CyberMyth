@@ -41,14 +41,12 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
         int playerLayer = LayerMask.NameToLayer("Players");
         Physics2D.IgnoreLayerCollision(playerLayer, playerLayer);
 
-        // Initialize the photonView reference
+        //Initialize the photonView reference
         photonView = GetComponent<PhotonView>();
-        if (photonView == null) Debug.LogError("PhotonView is null in PlayerMove.Awake()");
+        if (photonView == null) 
+            Debug.LogError("PhotonView is null in PlayerMove.Awake()");
         else
-        {
             photonView.name = PhotonNetwork.LocalPlayer.NickName;
-            Debug.Log($"PhotonView name: {photonView.name}, PhotonView ID: {photonView.ViewID}, PhotonView ownership: {(photonView.IsMine ? "true" : "false")}");
-        }
     }
 
     void Start()
@@ -56,16 +54,14 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
         if (photonView.IsMine)
         {
             StartCoroutine(NotifyGameManagerWhenReady());
-            this.recorder = gameObject.GetComponent<VoiceCommand>();
-            this.manipultor = FindAnyObjectByType<Manipulator>();
-            //this.manipulator = Instantiate(manipulator, new Vector3(0, 0), new Quaternion(0, 0, 0, 0));
-            //this.manipulator.player = gameObject;
+            recorder = gameObject.GetComponent<VoiceCommand>();
+            manipultor = FindAnyObjectByType<Manipulator>();
         }
     }
 
     private IEnumerator NotifyGameManagerWhenReady()
     {
-        yield return new WaitForSeconds(0.1f); // Small delay to ensure initialization is complete
+        yield return new WaitForSeconds(0.1f); //Small delay to ensure initialization is complete
 
         if (photonView.IsMine)
         {
@@ -78,9 +74,10 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (photonView.IsMine)
         {
-            PowerUpCommand command = this.recorder.Run(0);
+            PowerUpCommand command = recorder.Run(0);
             if (command != null)
                 sendCommandToManipulator(command);
+
             HandleInput();
             lastUpdateTime = PhotonNetwork.Time;
         }
@@ -88,14 +85,14 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
         {
             float lag = Mathf.Max(0, (float)(PhotonNetwork.Time - lastUpdateTime));
             Vector3 targetPosition = networkedPosition + networkedVelocity * lag;
-            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * lerpSpeed);
-            //transform.rotation = Quaternion.Lerp(transform.rotation, networkedRotation, Time.deltaTime * lerpSpeed);
+            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * lerpSpeed);;
         }
     }
 
     private void sendCommandToManipulator(PowerUpCommand command)
     {
         PhotonView manPhotonView = this.manipultor.GetComponent<PhotonView>();
+
         if(command != null)
             manPhotonView.RPC("savePowerUp", RpcTarget.All, command);
     }
@@ -113,7 +110,6 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     void RPC_SetUsername(string usernameString)
     {
-        //Debug.Log($"[RPC_SetUsername] RPC called with: {usernameString} for {photonView.Owner.NickName} - {photonView.ViewID}");
         if (Username != null)
         {
             Username.text = usernameString;
@@ -141,16 +137,8 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
-        {
             stream.SendNext(transform.position);
-            //stream.SendNext(myRigidbody2D.velocity);
-            //stream.SendNext(transform.rotation);
-        }
         else
-        {
             networkedPosition = (Vector3)stream.ReceiveNext();
-            //networkedVelocity = (Vector3)stream.ReceiveNext();
-            //networkedRotation = (Quaternion)stream.ReceiveNext();
-        }
     }
 }

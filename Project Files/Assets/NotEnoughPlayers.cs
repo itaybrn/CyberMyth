@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
@@ -12,7 +10,6 @@ public class NotEnoughPlayers : MonoBehaviour
         notEnoughPlayersUI.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (PhotonNetwork.CurrentRoom.PlayerCount < 2)

@@ -5,7 +5,7 @@ using Photon.Realtime;
 public class CreateGameScript : MonoBehaviourPunCallbacks
 {
     public string DestinationScene;
-    public string GameID;
+    private string GameID;
     public int MaxPlayers;
     private bool isTutorial;
 
@@ -14,7 +14,6 @@ public class CreateGameScript : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsConnectedAndReady)
         {
             isTutorial = false;
-            Debug.Log("IN CREATE-GAME-SCRIPT");
 
             GameID = System.Guid.NewGuid().ToString();
             GameID = GameID.Substring(0, 4).ToUpper();
@@ -41,6 +40,6 @@ public class CreateGameScript : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.LoadLevel(DestinationScene);
         }
-        
+
     }
 }

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using System.IO;
@@ -87,16 +86,10 @@ public class VoiceCommand : MonoBehaviour
     private bool coroutineFinished = false;
     private recordingIconScript icon;
 
-    /*public VoiceCommand(string apiKey, string filePath)
-    {
-        this.apiKey = apiKey;
-        this.filePath = Path.Combine(Application.dataPath, "audio.wav");
-    }*/
-
     void Start()
     {
-        this.filePath = Path.Combine(Application.dataPath, "audio.wav");
-        this.icon = FindAnyObjectByType<recordingIconScript>();
+        filePath = Path.Combine(Application.dataPath, "audio.wav");
+        icon = FindAnyObjectByType<recordingIconScript>();
     }
 
     public PowerUpCommand Run(int playerID)
@@ -114,14 +107,15 @@ public class VoiceCommand : MonoBehaviour
                 StopRecording(playerID);
             }
         }
+
         if (coroutineFinished)
         {
-            this.icon.changeTexture(recordingIconScript.Icon.notRecording);
-            PowerUpCommand toReturn = this.command;
-            if (this.command == null)
+            icon.changeTexture(recordingIconScript.Icon.notRecording);
+            PowerUpCommand toReturn = command;
+            if (command == null)
                 Debug.LogWarning("unknown voice command");
 
-            this.command = null;
+            command = null;
             coroutineFinished = false;
             return toReturn;
         }
@@ -132,7 +126,7 @@ public class VoiceCommand : MonoBehaviour
     void StartRecording()
     {
         isRecording = true;
-        this.icon.changeTexture(recordingIconScript.Icon.recording);
+        icon.changeTexture(recordingIconScript.Icon.recording);
 
         // Start recording from the default microphone
         recordedClip = Microphone.Start(null, false, 10, AudioSettings.outputSampleRate);
@@ -144,13 +138,10 @@ public class VoiceCommand : MonoBehaviour
     {
         isRecording = false;
 
-        // Stop recording
         Microphone.End(null);
-
-        // Save the recorded audio to a WAV file
         SaveToWAV(recordedClip, filePath);
 
-        this.icon.changeTexture(recordingIconScript.Icon.analyzing);
+        icon.changeTexture(recordingIconScript.Icon.analyzing);
 
         Debug.LogWarning("Recording stopped. Saved to: " + filePath);
         StartCoroutine(TranscribeAudioFile(filePath, playerID));
@@ -158,14 +149,11 @@ public class VoiceCommand : MonoBehaviour
 
     static void SaveToWAV(AudioClip clip, string path)
     {
-        // Create a float array to hold the audio data
+        //Create a float array to hold the audio data
         float[] data = new float[clip.samples * clip.channels];
         clip.GetData(data, 0);
 
-        // Convert the audio data to bytes
         byte[] bytes = ConvertToWavBytes(data, clip.channels, clip.frequency);
-
-        // Write the WAV data to file
         File.WriteAllBytes(path, bytes);
     }
 
@@ -175,27 +163,26 @@ public class VoiceCommand : MonoBehaviour
         {
             using (var writer = new BinaryWriter(memoryStream))
             {
-                // Write WAV header
+                //Write WAV header
                 writer.Write(new char[4] { 'R', 'I', 'F', 'F' });
                 writer.Write(36 + audioData.Length * 2);
                 writer.Write(new char[4] { 'W', 'A', 'V', 'E' });
                 writer.Write(new char[4] { 'f', 'm', 't', ' ' });
                 writer.Write(16);
-                writer.Write((ushort)1); // Format (PCM)
+                writer.Write((ushort)1); //Format (PCM)
                 writer.Write((ushort)channels);
                 writer.Write(sampleRate);
-                writer.Write(sampleRate * channels * 2); // Byte rate
-                writer.Write((ushort)(channels * 2)); // Block align
-                writer.Write((ushort)16); // Bits per sample
+                writer.Write(sampleRate * channels * 2); //Byte rate
+                writer.Write((ushort)(channels * 2)); //Block align
+                writer.Write((ushort)16); //Bits per sample
                 writer.Write(new char[4] { 'd', 'a', 't', 'a' });
                 writer.Write(audioData.Length * 2);
 
-                // Write audio data
+                //Write audio data
                 foreach (var sample in audioData)
-                {
                     writer.Write((short)(sample * short.MaxValue));
-                }
             }
+
             return memoryStream.ToArray();
         }
     }
@@ -203,78 +190,70 @@ public class VoiceCommand : MonoBehaviour
     IEnumerator TranscribeAudioFile(string audioFilePath, int playerID)
     {
         float startTime = Time.time;
-        // Check if the file exists
         if (!File.Exists(audioFilePath))
         {
             Debug.LogError("Audio file not found!");
             yield break;
         }
 
-        // Read the audio file as a byte array
         byte[] audioBytes = File.ReadAllBytes(audioFilePath);
 
-        // Create a UnityWebRequest and set its method to POST
-        UnityWebRequest www = UnityWebRequest.PostWwwForm("https://api.deepgram.com/v1/listen?model=nova-2&smart_format=true", "");
+        //Create a UnityWebRequest and set its method to POST
+        UnityWebRequest myWebRequest = UnityWebRequest.PostWwwForm("https://api.deepgram.com/v1/listen?model=nova-2&smart_format=true", "");
 
-        // Set the request headers
-        www.SetRequestHeader("Authorization", "Token " + apiKey);
-        www.SetRequestHeader("Content-Type", "audio/wav");
+        //Set the request headers
+        myWebRequest.SetRequestHeader("Authorization", "Token " + apiKey);
+        myWebRequest.SetRequestHeader("Content-Type", "audio/wav");
 
-        // Attach the audio data as binary to the request body
-        www.uploadHandler = new UploadHandlerRaw(audioBytes);
-        www.uploadHandler.contentType = "audio/wav";
+        //Attach the audio data as binary to the request body
+        myWebRequest.uploadHandler = new UploadHandlerRaw(audioBytes);
+        myWebRequest.uploadHandler.contentType = "audio/wav";
 
-        // Send the request and wait for the response
-        yield return www.SendWebRequest();
+        yield return myWebRequest.SendWebRequest();
 
-        // Check for errors
-        if (www.result != UnityWebRequest.Result.Success)
-        {
-            Debug.LogError("Transcription request failed: " + www.error);
-        }
+        if (myWebRequest.result != UnityWebRequest.Result.Success)
+            Debug.LogError("Transcription request failed: " + myWebRequest.error);
         else
         {
             float addedTime = Time.time - startTime;
-            // Print the transcription result
-            Debug.Log("Transcription result: " + www.downloadHandler.text);
+            Debug.Log("Transcription result: " + myWebRequest.downloadHandler.text);
 
-            string commandStr = JSONParser.parse(www.downloadHandler.text);
-            this.command = timeRewind(commandStr, playerID, addedTime);
-            if (this.command == null)
-                this.command = timeStop(commandStr, playerID);
-            if (this.command == null)
-                this.command = swap(commandStr, playerID);
-            if (this.command == null)
-                this.command = superweapon(commandStr, playerID);
-            if (this.command == null)
-                this.command = clone(commandStr, playerID);
+            string commandStr = JSONParser.parse(myWebRequest.downloadHandler.text);
+            commandStr = commandStr.Replace(".", "").Replace(",", "").ToLower(); //Removing unneeded symbols from string that interrupt parsing
+            Debug.LogWarning("Result: " + commandStr);
+
+            command = timeRewind(commandStr, playerID, addedTime);
+
+            if (command == null) //There wasn't a match for a valid Time Rewind command
+                command = timeStop(commandStr, playerID);
+
+            if (command == null) //There wasn't a match for a valid Time Stop command
+                command = swap(commandStr, playerID);
+
+            if (command == null) //There wasn't a match for a valid Swap command
+                command = superweapon(commandStr, playerID);
+
+            if (command == null) //There wasn't a match for a valid Superweapon command
+                command = clone(commandStr, playerID);
+
             coroutineFinished = true;
         }
     }
 
     public static PowerUpCommand timeRewind(string input, int playerID, float addedTime)
     {
-        // Define the prefixes and suffixes
-        string prefix = "Time rewind ";
-        string suffix = " seconds.";
+        string prefix = "time rewind ";
+        string suffix = " seconds";
 
-        // Check if the input string starts with the prefix and ends with the suffix
         if (input.StartsWith(prefix) && input.EndsWith(suffix))
         {
-            // Calculate the start and end indices for the parameter
             int startIndex = prefix.Length;
             int endIndex = input.Length - suffix.Length;
-
-            // Extract the parameter in between
             string parameter = input.Substring(startIndex, endIndex - startIndex);
 
-            // Try to convert the extracted parameter to a float
             if (float.TryParse(parameter, out float result))
-            {
                 return new PowerUpCommand(PowerUp.TimeRewind, result + addedTime, playerID);
-            }
         }
-        Debug.LogWarning("not time rewind. Voice command:" + input);
 
         // Return null if the input string doesn't meet the criteria
         return null;
@@ -282,27 +261,18 @@ public class VoiceCommand : MonoBehaviour
 
     public static PowerUpCommand timeStop(string input, int playerID)
     {
-        // Define the prefixes and suffixes
-        string prefix = "Time stop ";
-        string suffix = " seconds.";
+        string prefix = "time stop ";
+        string suffix = " seconds";
 
-        // Check if the input string starts with the prefix and ends with the suffix
         if (input.StartsWith(prefix) && input.EndsWith(suffix))
         {
-            // Calculate the start and end indices for the parameter
             int startIndex = prefix.Length;
             int endIndex = input.Length - suffix.Length;
-
-            // Extract the parameter in between
             string parameter = input.Substring(startIndex, endIndex - startIndex);
 
-            // Try to convert the extracted parameter to a float
             if (float.TryParse(parameter, out float result))
-            {
                 return new PowerUpCommand(PowerUp.TimeStop, result, playerID);
-            }
         }
-        Debug.LogWarning("not time stop. Voice command:" + input);
 
         // Return null if the input string doesn't meet the criteria
         return null;
@@ -310,27 +280,18 @@ public class VoiceCommand : MonoBehaviour
 
     public static PowerUpCommand swap(string input, int playerID)
     {
-        // Define the prefixes and suffixes
-        string prefix = "Swap with ";
-        string suffix = ".";
+        string prefix = "swap with ";
+        string suffix = "";
 
-        // Check if the input string starts with the prefix and ends with the suffix
         if (input.StartsWith(prefix) && input.EndsWith(suffix))
         {
-            // Calculate the start and end indices for the parameter
             int startIndex = prefix.Length;
             int endIndex = input.Length - suffix.Length;
-
-            // Extract the parameter in between
             string parameter = input.Substring(startIndex, endIndex - startIndex);
 
-            // Try to convert the extracted parameter to a float
             if (int.TryParse(parameter, out int result))
-            {
                 return new PowerUpCommand(PowerUp.Swap, (float)result, playerID);
-            }
         }
-        Debug.LogWarning("not swap. Voice command:" + input);
 
         // Return null if the input string doesn't meet the criteria
         return null;
@@ -338,10 +299,8 @@ public class VoiceCommand : MonoBehaviour
 
     public static PowerUpCommand superweapon(string input, int playerID)
     {
-        if (input == "Super weapon.")
+        if (input == "super weapon")
             return new PowerUpCommand(PowerUp.Superweapon, playerID);
-
-        Debug.LogWarning("not superweapon. Voice command:" + input);
 
         // Return null if the input string doesn't meet the criteria
         return null;
@@ -349,10 +308,8 @@ public class VoiceCommand : MonoBehaviour
 
     public static PowerUpCommand clone(string input, int playerID)
     {
-        if (input == "Clone.")
+        if (input == "clone")
             return new PowerUpCommand(PowerUp.Clone, playerID);
-
-        Debug.LogWarning("not clone. Voice command:" + input);
 
         // Return null if the input string doesn't meet the criteria
         return null;
