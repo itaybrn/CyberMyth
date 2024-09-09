@@ -795,7 +795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startGameButton: {fileID: 2002689473}
-  MinPlayers: 1
+  MinPlayers: 2
   MaxPlayers: 3
   playerNamePrefab: {fileID: 5193386697209260338, guid: 3fc6d422c09da0a4093caa7f23d26f3f, type: 3}
   playerNameContainer: {fileID: 546508710}
@@ -1429,7 +1429,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1940591834

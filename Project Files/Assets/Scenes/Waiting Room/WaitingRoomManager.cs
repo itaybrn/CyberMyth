@@ -4,7 +4,7 @@ using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using ExitGames.Client.Photon;
+using System.Collections;
 
 public class WaitingRoomManager : MonoBehaviourPunCallbacks
 {
@@ -78,7 +78,7 @@ public class WaitingRoomManager : MonoBehaviourPunCallbacks
     {
         statusText.text = $"Players in room: {PhotonNetwork.CurrentRoom.PlayerCount} / {MaxPlayers}";
 
-        Hashtable expectedPlayerCount = new Hashtable();
+        ExitGames.Client.Photon.Hashtable expectedPlayerCount = new ExitGames.Client.Photon.Hashtable();
         expectedPlayerCount.Add("ExpectedPlayerCount", PhotonNetwork.CurrentRoom.PlayerCount);
         PhotonNetwork.CurrentRoom.SetCustomProperties(expectedPlayerCount);
 
@@ -122,8 +122,9 @@ public class WaitingRoomManager : MonoBehaviourPunCallbacks
             playerNameObjects.Remove(actorNumber);
     }
 
-    void CheckStartButton()
+    private void CheckStartButton()
     {
+        Debug.Log("Players in room: " + PhotonNetwork.CurrentRoom.PlayerCount);
         startGameButton.interactable = PhotonNetwork.CurrentRoom.PlayerCount >= MinPlayers;
     }
 }
