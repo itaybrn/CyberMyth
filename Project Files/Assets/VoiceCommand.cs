@@ -219,6 +219,9 @@ public class VoiceCommand : MonoBehaviour
             Debug.Log("Transcription result: " + myWebRequest.downloadHandler.text);
 
             string commandStr = JSONParser.parse(myWebRequest.downloadHandler.text);
+            commandStr = commandStr.Replace(".", "").Replace(",", "").ToLower(); //Removing unneeded symbols from string that interrupt parsing
+            Debug.LogWarning("Result: " + commandStr);
+
             command = timeRewind(commandStr, playerID, addedTime);
 
             if (command == null) //There wasn't a match for a valid Time Rewind command
@@ -239,8 +242,8 @@ public class VoiceCommand : MonoBehaviour
 
     public static PowerUpCommand timeRewind(string input, int playerID, float addedTime)
     {
-        string prefix = "Time rewind ";
-        string suffix = " seconds.";
+        string prefix = "time rewind ";
+        string suffix = " seconds";
 
         if (input.StartsWith(prefix) && input.EndsWith(suffix))
         {
@@ -258,8 +261,8 @@ public class VoiceCommand : MonoBehaviour
 
     public static PowerUpCommand timeStop(string input, int playerID)
     {
-        string prefix = "Time stop ";
-        string suffix = " seconds.";
+        string prefix = "time stop ";
+        string suffix = " seconds";
 
         if (input.StartsWith(prefix) && input.EndsWith(suffix))
         {
@@ -277,8 +280,8 @@ public class VoiceCommand : MonoBehaviour
 
     public static PowerUpCommand swap(string input, int playerID)
     {
-        string prefix = "Swap with ";
-        string suffix = ".";
+        string prefix = "swap with ";
+        string suffix = "";
 
         if (input.StartsWith(prefix) && input.EndsWith(suffix))
         {
@@ -296,7 +299,7 @@ public class VoiceCommand : MonoBehaviour
 
     public static PowerUpCommand superweapon(string input, int playerID)
     {
-        if (input == "Super weapon.")
+        if (input == "super weapon")
             return new PowerUpCommand(PowerUp.Superweapon, playerID);
 
         // Return null if the input string doesn't meet the criteria
@@ -305,7 +308,7 @@ public class VoiceCommand : MonoBehaviour
 
     public static PowerUpCommand clone(string input, int playerID)
     {
-        if (input == "Clone.")
+        if (input == "clone")
             return new PowerUpCommand(PowerUp.Clone, playerID);
 
         // Return null if the input string doesn't meet the criteria
