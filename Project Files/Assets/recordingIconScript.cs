@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,17 +15,11 @@ namespace recordingIcon
             recording,
             analyzing
         }
-        // Start is called before the first frame update
+
         void Start()
         {
-            this.uiImage = gameObject.GetComponent<Image>();
-            this.uiImage.sprite = notRecTex;
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            uiImage = gameObject.GetComponent<Image>();
+            uiImage.sprite = notRecTex;
         }
 
         public void changeTexture(Icon ico)
@@ -35,13 +27,13 @@ namespace recordingIcon
             switch (ico)
             {
                 case Icon.notRecording:
-                    this.uiImage.sprite = notRecTex;
+                    uiImage.sprite = notRecTex;
                     break;
                 case Icon.recording:
-                    this.uiImage.sprite = recTex;
+                    uiImage.sprite = recTex;
                     break;
                 case Icon.analyzing:
-                    this.uiImage.sprite = analyzingTex;
+                    uiImage.sprite = analyzingTex;
                     break;
                 default:
                     break;

@@ -1,6 +1,5 @@
 using UnityEngine;
 using Photon.Pun;
-using ClearSky;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
@@ -14,8 +13,6 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("ExpectedPlayerCount"))
             numOfPlayers = (int)PhotonNetwork.CurrentRoom.CustomProperties["ExpectedPlayerCount"];
-        else
-            Debug.LogError("ExpectedPlayerCount property is missing!");
     }
 
     private void Update()
@@ -25,7 +22,6 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.CurrentRoom != null && PhotonNetwork.CurrentRoom.PlayerCount == numOfPlayers)
         {
-            
             if (playersReady < numOfPlayers)
             {
                 playersReady = 0;

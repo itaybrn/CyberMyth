@@ -1,13 +1,11 @@
 using Photon.Pun;
 using UnityEngine;
-using TMPro;
 
 public class BoxMoveSynced : HasID, IPunObservable
 {
     public float moveSpd;
     private Vector2 networkedPosition;
     private Vector2 networkedVelocity;
-    //private float lerpSpeed = 10f;
     private Rigidbody2D rb2D;
 
     void Start()
@@ -17,14 +15,12 @@ public class BoxMoveSynced : HasID, IPunObservable
 
     void Update()
     {
-        if (/*PhotonNetwork.IsMasterClient && */GetComponent<PhotonView>().IsMine)
+        if (GetComponent<PhotonView>().IsMine)
         {
-            // Handle box movement locally (Master Client)
             rb2D.velocity = Vector2.left * moveSpd;
         }
         else
         {
-            // Smooth movement of the box with interpolation for remote clients
             rb2D.position = networkedPosition;
             rb2D.velocity = networkedVelocity;
         }
@@ -32,15 +28,13 @@ public class BoxMoveSynced : HasID, IPunObservable
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if (stream.IsWriting)
+        if (stream.IsWriting) //Sending
         {
-            // Send the box's position and velocity to other clients
             stream.SendNext(rb2D.position);
             stream.SendNext(rb2D.velocity);
         }
-        else
+        else //Receiving
         {
-            // Receive the box's position and velocity from the owner
             networkedPosition = (Vector2)stream.ReceiveNext();
             networkedVelocity = (Vector2)stream.ReceiveNext();
         }

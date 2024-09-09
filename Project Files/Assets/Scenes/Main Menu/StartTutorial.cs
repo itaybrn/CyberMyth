@@ -5,34 +5,37 @@ using UnityEngine.SceneManagement;
 
 public class StartTutorial : MonoBehaviourPunCallbacks
 {
+    public string DestinationScene;
+    private string GameID;
+    public int MaxPlayers;
     private bool isTutorial;
     public void CreateTutorialRoom()
     {
         if (PhotonNetwork.IsConnectedAndReady)
         {
             isTutorial = true;
-            Debug.Log("IN START-TUTORIAL");
+            GameID = PhotonNetwork.AuthValues.UserId; //Making a unique gameID for each game session
+            Debug.Log($"Successfully generated game ID: {GameID}");
 
             RoomOptions roomOptions = new RoomOptions();
-            roomOptions.MaxPlayers = (byte)1;
+            roomOptions.MaxPlayers = (byte)MaxPlayers;
 
-            //PlayerPrefs.SetString("PlayerName", "Host");
             string playerName = "Host";
             PhotonNetwork.NickName = playerName;
             Debug.Log($"New player's name: {playerName}");
 
-            PhotonNetwork.CreateRoom("Tutorial", roomOptions);
+            PhotonNetwork.CreateRoom(GameID, roomOptions);
         }
         else
         {
-            Debug.LogError("Cannot create room. Not connected to the Master Server.");
+            Debug.LogError("Cannot create room- not connected to the Master Server.");
         }
     }
     public override void OnJoinedRoom()
     {
         if (isTutorial)
         {
-            SceneManager.LoadScene("Tutorial1");
+            SceneManager.LoadScene(DestinationScene);
         }
     }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -8,34 +6,28 @@ using Photon.Pun;
 public class PauseMenu : MonoBehaviourPunCallbacks
 {
     public GameObject pauseMenuUI;
-    public Button restartButton; // Reference to the Restart Level button
+    public Button restartButton;
     private bool isPaused = false;
 
     void Start()
     {
         pauseMenuUI.SetActive(false);
-        // Check if the current player is the Master Client and set the button's interactable state
+
         if (!PhotonNetwork.IsMasterClient)
-        {
-            restartButton.interactable = false; // Disable the button for non-hosts
-        }
+            restartButton.interactable = false;
     }
 
     void Update()
     {
         if (PhotonNetwork.IsMasterClient)
-            restartButton.interactable = true; // Enable if became host
+            restartButton.interactable = true;
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
-            {
                 Resume();
-            }
             else
-            {
                 Pause();
-            }
         }
     }
 
@@ -54,15 +46,13 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     public void LoadMenu()
     {
         PhotonNetwork.LeaveRoom();
-        SceneManager.LoadScene("MainMenu"); // Replace "MainMenu" with your menu scene name
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void RestartLevel()
     {
         if (PhotonNetwork.IsMasterClient)
-        {
             photonView.RPC("ReloadScene", RpcTarget.All);
-        }
     }
 
     [PunRPC]

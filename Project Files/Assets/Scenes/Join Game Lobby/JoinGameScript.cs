@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Photon.Pun;
 using TMPro;
 
@@ -12,8 +9,8 @@ public class JoinGameScript : MonoBehaviourPunCallbacks
     public TextMeshProUGUI ErrorText;
     public string DestinationScene;
 
-    private const short ERR_LOBBY_FULL = 32765;
-    private const short ERR_LOBBY_NOT_FOUND = 32758;
+    private const short ERR_LOBBY_FULL = 32765; //Error code
+    private const short ERR_LOBBY_NOT_FOUND = 32758; //Error code
 
     public void JoinRoom()
     {
